@@ -9,10 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="MediatR" Version="8.0.1" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.24" />
@@ -25,7 +21,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Dislinkt.Jobs.Application\Dislinkt.Jobs.Application.csproj" />
     <ProjectReference Include="..\Dislinkt.Jobs.Persistance.MongoDB\Dislinkt.Jobs.Persistance.MongoDB.csproj" />
+    <ProjectReference Include="..\Dislinkt.Jobs\Dislinkt.Jobs.csproj" />
   </ItemGroup>
 
 

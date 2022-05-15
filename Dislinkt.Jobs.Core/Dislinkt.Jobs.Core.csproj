@@ -42,9 +42,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IJobRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Repositories\" />
+    <ProjectReference Include="..\Dislinkt.Jobs.Domain\Dislinkt.Jobs.Domain.csproj">
+      <Project>{f8de0549-568c-41e0-b922-34cd729a6018}</Project>
+      <Name>Dislinkt.Jobs.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
