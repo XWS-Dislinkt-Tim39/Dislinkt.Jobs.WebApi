@@ -1,24 +1,23 @@
+using Dislinkt.Jobs.Application.AddJobOffer.Commands;
+using Dislinkt.Jobs.Core.Repositories;
 using Dislinkt.Jobs.Persistance.MongoDB.Common;
 using Dislinkt.Jobs.Persistance.MongoDB.Factories;
+using Dislinkt.Jobs.Persistance.MongoDB.Repositories;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 using Newtonsoft.Json.Serialization;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace Dislinkt.Jobs.WebApi
 {
@@ -58,9 +57,10 @@ namespace Dislinkt.Jobs.WebApi
                 options.Connection = Configuration.GetSection("MongoSettings:ConnectionString").Value;
                 options.DatabaseName = Configuration.GetSection("MongoSettings:DatabaseName").Value;
             });
-
+            services.AddMediatR(typeof(AddJobOfferCommand).GetTypeInfo().Assembly);
             services.AddScoped<IDatabaseFactory, DatabaseFactory>();
             services.AddScoped<IQueryExecutor, QueryExecutor>();
+            services.AddScoped<IJobRepository, JobRepository>();
 
             services.AddScoped<MongoDbContext>();
 

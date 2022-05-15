@@ -4,5 +4,22 @@
         <name>Dislinkt.Jobs.WebApi</name>
     </assembly>
     <members>
+        <member name="T:Dislinkt.Jobs.WebApi.Controllers.JobController">
+            <summary>
+            Jobs controler
+            </summary>
+        </member>
+        <member name="M:Dislinkt.Jobs.WebApi.Controllers.JobController.#ctor(MediatR.IMediator)">
+            <summary>
+            Init of controller
+            </summary>
+        </member>
+        <member name="M:Dislinkt.Jobs.WebApi.Controllers.JobController.AddPostAsync(Dislinkt.Jobs.JobOfferData)">
+            <summary>
+            Add new job offer
+            </summary>
+            <returns>Status of publishing job offer</returns>
+            /// <param name="jobOfferData">for job</param>
+        </member>
     </members>
 </doc>

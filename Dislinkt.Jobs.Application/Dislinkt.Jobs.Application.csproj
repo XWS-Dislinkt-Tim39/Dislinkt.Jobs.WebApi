@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MediatR, Version=8.0.1.0, Culture=neutral, PublicKeyToken=bb9a41a5e8aaa7e2, processorArchitecture=MSIL">
+      <HintPath>..\packages\MediatR.8.0.1\lib\net461\MediatR.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,7 +44,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddJobOffer\Commands\AddJobOfferCommand.cs" />
+    <Compile Include="AddJobOffer\Commands\AddJobOfferHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Dislinkt.Jobs.Core\Dislinkt.Jobs.Core.csproj">
+      <Project>{505d25cc-a86a-44db-aa51-90c77c415e8f}</Project>
+      <Name>Dislinkt.Jobs.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dislinkt.Jobs.Domain\Dislinkt.Jobs.Domain.csproj">
+      <Project>{f8de0549-568c-41e0-b922-34cd729a6018}</Project>
+      <Name>Dislinkt.Jobs.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dislinkt.Jobs\Dislinkt.Jobs.csproj">
+      <Project>{29928bce-b306-4be4-9fa4-6d9b99591201}</Project>
+      <Name>Dislinkt.Jobs</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
