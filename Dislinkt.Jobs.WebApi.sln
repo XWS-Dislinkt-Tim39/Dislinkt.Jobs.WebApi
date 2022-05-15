@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dislinkt.Jobs.WebApi", "Dislinkt.Jobs.WebApi\Dislinkt.Jobs.WebApi.csproj", "{0989E87E-D69F-43E2-82A1-0201E4247287}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dislinkt.Jobs", "Dislinkt.Jobs\Dislinkt.Jobs.csproj", "{29928BCE-B306-4BE4-9FA4-6D9B99591201}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dislinkt.Jobs.Application", "Dislinkt.Jobs.Application\Dislinkt.Jobs.Application.csproj", "{B3F67F9C-B531-4D13-B8AF-69408BF74E74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dislinkt.Jobs.Core", "Dislinkt.Jobs.Core\Dislinkt.Jobs.Core.csproj", "{505D25CC-A86A-44DB-AA51-90C77C415E8F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dislinkt.Jobs.Domain", "Dislinkt.Jobs.Domain\Dislinkt.Jobs.Domain.csproj", "{F8DE0549-568C-41E0-B922-34CD729A6018}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dislinkt.Jobs.Persistance.MongoDB", "Dislinkt.Jobs.Persistance.MongoDB\Dislinkt.Jobs.Persistance.MongoDB.csproj", "{E8698296-1404-4019-AE18-6600C7F91FF7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0989E87E-D69F-43E2-82A1-0201E4247287}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0989E87E-D69F-43E2-82A1-0201E4247287}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0989E87E-D69F-43E2-82A1-0201E4247287}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0989E87E-D69F-43E2-82A1-0201E4247287}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29928BCE-B306-4BE4-9FA4-6D9B99591201}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29928BCE-B306-4BE4-9FA4-6D9B99591201}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29928BCE-B306-4BE4-9FA4-6D9B99591201}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29928BCE-B306-4BE4-9FA4-6D9B99591201}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3F67F9C-B531-4D13-B8AF-69408BF74E74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3F67F9C-B531-4D13-B8AF-69408BF74E74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3F67F9C-B531-4D13-B8AF-69408BF74E74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3F67F9C-B531-4D13-B8AF-69408BF74E74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{505D25CC-A86A-44DB-AA51-90C77C415E8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{505D25CC-A86A-44DB-AA51-90C77C415E8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{505D25CC-A86A-44DB-AA51-90C77C415E8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{505D25CC-A86A-44DB-AA51-90C77C415E8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8DE0549-568C-41E0-B922-34CD729A6018}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8DE0549-568C-41E0-B922-34CD729A6018}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8DE0549-568C-41E0-B922-34CD729A6018}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8DE0549-568C-41E0-B922-34CD729A6018}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8698296-1404-4019-AE18-6600C7F91FF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8698296-1404-4019-AE18-6600C7F91FF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8698296-1404-4019-AE18-6600C7F91FF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8698296-1404-4019-AE18-6600C7F91FF7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {63E3C7EF-8193-4FF5-91BF-CDEA2D7B82B3}
+	EndGlobalSection
+EndGlobal
