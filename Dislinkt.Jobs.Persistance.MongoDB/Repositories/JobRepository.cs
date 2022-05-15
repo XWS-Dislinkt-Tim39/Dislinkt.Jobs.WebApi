@@ -2,8 +2,13 @@
 using Dislinkt.Jobs.Domain.Jobs;
 using Dislinkt.Jobs.Persistance.MongoDB.Common;
 using Dislinkt.Jobs.Persistance.MongoDB.Entities;
+using MongoDB.Bson;
 using MongoDB.Driver;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Linq;
+using System;
 
 namespace Dislinkt.Jobs.Persistance.MongoDB.Repositories
 {
@@ -26,6 +31,15 @@ namespace Dislinkt.Jobs.Persistance.MongoDB.Repositories
             {
                 throw ex;
             }
+        }
+
+        public async Task<IReadOnlyList<Job>> SearchJobs(string searchParameter)
+        {
+            var filter = Builders<JobEntity>.Filter.Regex("PositionName", BsonRegularExpression.Create(new Regex(searchParameter, RegexOptions.IgnoreCase)));
+
+            var result = await _queryExecutor.FindAsync(filter);
+
+            return result?.AsEnumerable()?.Select(s => s.ToJob())?.ToArray() ?? Array.Empty<Job>();
         }
     }
 }
