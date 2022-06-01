@@ -1,4 +1,5 @@
 ﻿using Dislinkt.Jobs.Application.AddJobOffer.Commands;
+using Dislinkt.Jobs.Application.GetAllJobs.Commands;
 using Dislinkt.Jobs.Application.SearchJobs.Commands;
 using Dislinkt.Jobs.Domain.Jobs;
 using MediatR;
@@ -52,6 +53,18 @@ namespace Dislinkt.Jobs.WebApi.Controllers
         {
             return await _mediator.Send(new SearchJobsCommand(searchParameter));
 
+        }
+
+        /// <summary>
+        /// Get all jobs
+        /// </summary>
+        /// <returns>Get all jobs</returns>
+        [HttpGet]
+        [SwaggerOperation(Tags = new[] { ApiTag })]
+        [Route("/get-all-jobs")]
+        public async Task<IReadOnlyCollection<Job>> GetAllJobsAsync()
+        {
+            return await _mediator.Send(new GetAllJobsCommand());
         }
     }
 }

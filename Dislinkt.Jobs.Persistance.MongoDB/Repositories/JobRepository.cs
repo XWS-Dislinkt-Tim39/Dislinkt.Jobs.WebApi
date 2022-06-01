@@ -41,5 +41,12 @@ namespace Dislinkt.Jobs.Persistance.MongoDB.Repositories
 
             return result?.AsEnumerable()?.Select(s => s.ToJob())?.ToArray() ?? Array.Empty<Job>();
         }
+
+        public async Task<IReadOnlyCollection<Job>> GetAllAsync()
+        {
+            var result = await _queryExecutor.GetAll<JobEntity>();
+
+            return result?.AsEnumerable().Select(s => s.ToJob()).ToArray() ?? Array.Empty<Job>();
+        }
     }
 }

@@ -46,6 +46,8 @@
   <ItemGroup>
     <Compile Include="AddJobOffer\Commands\AddJobOfferCommand.cs" />
     <Compile Include="AddJobOffer\Commands\AddJobOfferHandler.cs" />
+    <Compile Include="GetAllJobs\Commands\GetAllJobsCommand.cs" />
+    <Compile Include="GetAllJobs\Commands\GetAllJobsHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchJobs\Commands\SearchJobsCommand.cs" />
     <Compile Include="SearchJobs\Commands\SearchJobsHandler.cs" />

@@ -8,5 +8,6 @@ namespace Dislinkt.Jobs.Core.Repositories
     {
         Task AddJobAsync(Job job);
         Task<IReadOnlyList<Job>> SearchJobs(string searchParameter);
+        Task<IReadOnlyCollection<Job>> GetAllAsync();
     }
 }
