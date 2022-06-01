@@ -46,6 +46,16 @@ namespace Dislinkt.Jobs.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    builder =>
+                    {
+                        builder.WithOrigins("https://localhost:44351", "http://localhost:4200")
+                                            .AllowAnyHeader()
+                                            .AllowAnyMethod();
+                    });
+            });
             services.AddMvcCore();
             services.AddControllers().AddNewtonsoftJson(opt =>
             {
@@ -99,6 +109,13 @@ namespace Dislinkt.Jobs.WebApi
             }
 
             app.UseHttpsRedirection();
+            app.UseCors(builder =>
+            {
+                builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+            });
 
             app.UseRouting();
 
