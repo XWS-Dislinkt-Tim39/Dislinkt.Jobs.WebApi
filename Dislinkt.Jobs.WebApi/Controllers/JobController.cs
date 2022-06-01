@@ -47,7 +47,7 @@ namespace Dislinkt.Jobs.WebApi.Controllers
         /// </summary>
         /// <returns>Jobs</returns>
         /// /// <param name="searchParameter">for job</param>
-        [HttpPost]
+        [HttpGet]
         [SwaggerOperation(Tags = new[] { ApiTag })]
         [Route("/search-job")]
         public async Task<IReadOnlyList<Job>> SearchJobAsync(string searchParameter)
