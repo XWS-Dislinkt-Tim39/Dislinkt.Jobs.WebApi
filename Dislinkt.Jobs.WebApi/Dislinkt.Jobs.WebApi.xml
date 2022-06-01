@@ -34,6 +34,13 @@
             </summary>
             <returns>Get all jobs</returns>
         </member>
+        <member name="M:Dislinkt.Jobs.WebApi.Controllers.JobController.GetUserJobsAsync(System.Guid)">
+            <summary>
+            Get jobs by user
+            </summary>
+            <returns>Get user jobs</returns>
+            /// <param name="userId">for job</param>
+        </member>
         <member name="T:Dislinkt.Jobs.WebApi.Startup">
             <summary>
             Startup class

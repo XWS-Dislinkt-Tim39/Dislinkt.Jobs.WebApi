@@ -48,5 +48,14 @@ namespace Dislinkt.Jobs.Persistance.MongoDB.Repositories
 
             return result?.AsEnumerable().Select(s => s.ToJob()).ToArray() ?? Array.Empty<Job>();
         }
+
+        public async Task<IReadOnlyCollection<Job>> GetByUserId(Guid userId)
+        {
+            var filter = Builders<JobEntity>.Filter.Eq(u => u.PublisherId, userId);
+
+            var result = await _queryExecutor.FindAsync(filter);
+
+            return result?.AsEnumerable().Select(s => s.ToJob()).ToArray() ?? Array.Empty<Job>();
+        }
     }
 }
