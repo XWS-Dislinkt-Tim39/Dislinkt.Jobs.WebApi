@@ -1,74 +1,279 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>Dislinkt.Jobs.WebApi</name>
+        <name>Dislinkt.Profile.WebApi</name>
     </assembly>
     <members>
-        <member name="T:Dislinkt.Jobs.WebApi.Controllers.JobController">
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.RegisterUserAsync(Dislinkt.Profile.UserData)">
             <summary>
-            Jobs controler
+            Register new user
+            </summary>
+            <returns>A boolean status of registration</returns>
+            /// <param name="userData">for user</param>
+        </member>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.UpdateUserAsync(Dislinkt.Profile.Application.UpdateUserData)">
+            <summary>
+            Update existing user
+            </summary>
+            <returns>Updated user</returns>
+            /// <param name="updateUserData">for user</param>
+        </member>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.AddEducation(Dislinkt.Profile.EducationData)">
+            <summary>
+            Add education
+            </summary>
+            <returns>A boolean status of adding education to user</returns>
+            /// <param name="educationData">for education</param>
+        </member>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.UpdateEducationAsync(Dislinkt.Profile.Application.UpdateEducationData)">
+            <summary>
+            Update education
+            </summary>
+            <returns>Updated educatione</returns>
+            /// <param name="updateEducation">for user</param>
+        </member>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.AddWorkExperience(Dislinkt.Profile.Application.WorkExperienceData)">
+            <summary>
+            Add work experience
+            </summary>
+            <returns>A boolean status of adding work experience to user</returns>
+            /// <param name="workExperienceData">for work experience</param>
+        </member>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.UpdateWorkExperienceAsync(Dislinkt.Profile.Application.UpdateWorkExperienceData)">
+            <summary>
+            Update work experience
+            </summary>
+            <returns>Updated work experience</returns>
+            /// <param name="updateWorkExperience">for user</param>
+        </member>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.AddNewSkill(Dislinkt.Profile.Application.SkillAddedData)">
+            <summary>
+            Add new skill
+            </summary>
+            <returns>A boolean status of adding skill to user</returns>
+            /// <param name="skillAddedData">for skill</param>
+        </member>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.AddSkill(Dislinkt.Profile.Application.SkillData)">
+            <summary>
+            Add existing skill
+            </summary>
+            <returns>A boolean status of adding skill to user</returns>
+            /// <param name="skillData">for skill</param>
+        </member>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.RemoveSkill(System.Guid,System.Guid)">
+            <summary>
+            Add existing interest
+            </summary>
+            <returns>A boolean status of removing skill from user</returns>
+            /// <param name="userId">for user</param>
+            /// <param name="skillId">for interest</param>
+        </member>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.AddNewInterest(Dislinkt.Profile.Application.InterestAddedData)">
+            <summary>
+            Add new interest
+            </summary>
+            <returns>A boolean status of adding interest to user</returns>
+            /// <param name="interestAddedData">for interest</param>
+        </member>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.AddInterest(Dislinkt.Profile.Application.InterestData)">
+            <summary>
+            Add existing interest
+            </summary>
+            <returns>A boolean status of adding interest to user</returns>
+            /// <param name="interestData">for interest</param>
+        </member>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.RemoveInterest(System.Guid,System.Guid)">
+            <summary>
+            Add existing interest
+            </summary>
+            <returns>A boolean status of removing interest from user</returns>
+            /// <param name="userId">for user</param>
+            /// <param name="interestId">for interest</param>
+        </member>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.ApproveUserAsync(System.Guid)">
+            <summary>
+            Approve user
+            </summary>
+            <returns>A boolean status of approving user</returns>
+            /// <param name="id">for user</param>
+        </member>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.ChangePrivacyAsync(System.Guid,System.Boolean)">
+            <summary>
+            Change privacy
+            </summary>
+            <returns>A boolean status of changed privacy for user</returns>
+            /// <param name="userId">for user</param>
+            /// <param name="isPublic">for privacy</param>
+        </member>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.SignUpUserAsync(System.String,System.String)">
+            <summary>
+            Sign up user
+            </summary>
+            <returns>Registred user or null if user dont exist</returns>
+            /// <param name="username">for user</param>
+            /// <param name="password">for user</param>
+        </member>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.GetAllUsersAsync">
+            <summary>
+            Get all users
+            </summary>
+            <returns>Get all users</returns>
+        </member>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.GetPublicUsersAsync">
+            <summary>
+            Get public users
+            </summary>
+            <returns>Get all users</returns>
+        </member>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.GetUserAsync(System.Guid)">
+            <summary>
+            Get user
+            </summary>
+            <returns>Get user by id</returns>
+            /// /// <param id="id">for user</param>
+        </member>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.SearchUserAsync(System.String)">
+            <summary>
+            Search users
+            </summary>
+            <returns>Get users by username</returns>
+            /// /// <param name="username">for user</param>
+        </member>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.SearchSkillsAsync(System.String)">
+            <summary>
+            Search skills
+            </summary>
+            <returns>Get skills by name</returns>
+            /// /// <param name="name">for skill</param>
+        </member>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.SearchInterestsAsync(System.String)">
+            <summary>
+            Search interests
+            </summary>
+            <returns>Get interests by name</returns>
+            /// /// <param name="name">for interests</param>
+        </member>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.GetAllSkillsAsync">
+            <summary>
+            Get all skills
+            </summary>
+            <returns>Get all skills</returns>
+        </member>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.GetAllInterestsAsync">
+            <summary>
+            Get all interests
+            </summary>
+            <returns>Get all interests</returns>
+        </member>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.GetUserSkillsAsync(System.Guid)">
+            <summary>
+            Get user skills
+            </summary>
+            <returns>Get user skills</returns>
+            /// /// /// <param id="id">for user</param>
+        </member>
+        <member name="M:Dislinkt.Profile.WebApi.Controllers.ProfileController.GetUserInterestsAsync(System.Guid)">
+            <summary>
+            Get user interests
+            </summary>
+            <returns>Get user interests</returns>
+            /// /// /// <param id="id">for user</param>
+        </member>
+        <member name="T:GrpcService.GreetReflection">
+            <summary>Holder for reflection information generated from Protos/greet.proto</summary>
+        </member>
+        <member name="P:GrpcService.GreetReflection.Descriptor">
+            <summary>File descriptor for Protos/greet.proto</summary>
+        </member>
+        <member name="T:GrpcService.HelloRequest">
+            <summary>
+            The request message containing the user's name.
             </summary>
         </member>
-        <member name="M:Dislinkt.Jobs.WebApi.Controllers.JobController.#ctor(MediatR.IMediator)">
+        <member name="F:GrpcService.HelloRequest.IdFieldNumber">
+            <summary>Field number for the "Id" field.</summary>
+        </member>
+        <member name="F:GrpcService.HelloRequest.UsernameFieldNumber">
+            <summary>Field number for the "Username" field.</summary>
+        </member>
+        <member name="F:GrpcService.HelloRequest.StatusFieldNumber">
+            <summary>Field number for the "Status" field.</summary>
+        </member>
+        <member name="T:GrpcService.HelloReply">
             <summary>
-            Init of controller
+            The response message containing the greetings.
             </summary>
         </member>
-        <member name="M:Dislinkt.Jobs.WebApi.Controllers.JobController.AddJobAsync(Dislinkt.Jobs.JobOfferData)">
-            <summary>
-            Add new job offer
-            </summary>
-            <returns>Status of publishing job offer</returns>
-            /// <param name="jobOfferData">for job</param>
+        <member name="F:GrpcService.HelloReply.SuccessfulFieldNumber">
+            <summary>Field number for the "successful" field.</summary>
         </member>
-        <member name="M:Dislinkt.Jobs.WebApi.Controllers.JobController.SearchJobAsync(System.String)">
-            <summary>
-            Search job offer
-            </summary>
-            <returns>Jobs</returns>
-            /// <param name="searchParameter">for job</param>
+        <member name="F:GrpcService.HelloReply.MessageFieldNumber">
+            <summary>Field number for the "message" field.</summary>
         </member>
-        <member name="M:Dislinkt.Jobs.WebApi.Controllers.JobController.GetAllJobsAsync">
+        <member name="T:GrpcService.Greeter">
             <summary>
-            Get all jobs
-            </summary>
-            <returns>Get all jobs</returns>
-        </member>
-        <member name="M:Dislinkt.Jobs.WebApi.Controllers.JobController.GetUserJobsAsync(System.Guid)">
-            <summary>
-            Get jobs by user
-            </summary>
-            <returns>Get user jobs</returns>
-            /// <param name="userId">for job</param>
-        </member>
-        <member name="T:Dislinkt.Jobs.WebApi.Startup">
-            <summary>
-            Startup class
+            The greeting service definition.
             </summary>
         </member>
-        <member name="M:Dislinkt.Jobs.WebApi.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
-            <summary>
-            Startup init
-            </summary>
-            <param name="configuration"></param>
+        <member name="P:GrpcService.Greeter.Descriptor">
+            <summary>Service descriptor</summary>
         </member>
-        <member name="P:Dislinkt.Jobs.WebApi.Startup.Configuration">
-            <summary>
-            IConfiguration
-            </summary>
+        <member name="T:GrpcService.Greeter.GreeterClient">
+            <summary>Client for Greeter</summary>
         </member>
-        <member name="M:Dislinkt.Jobs.WebApi.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
-            <summary>
-            Configure services
-            </summary>
-            <param name="services"></param>
+        <member name="M:GrpcService.Greeter.GreeterClient.#ctor(Grpc.Core.ChannelBase)">
+            <summary>Creates a new client for Greeter</summary>
+            <param name="channel">The channel to use to make remote calls.</param>
         </member>
-        <member name="M:Dislinkt.Jobs.WebApi.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+        <member name="M:GrpcService.Greeter.GreeterClient.#ctor(Grpc.Core.CallInvoker)">
+            <summary>Creates a new client for Greeter that uses a custom <c>CallInvoker</c>.</summary>
+            <param name="callInvoker">The callInvoker to use to make remote calls.</param>
+        </member>
+        <member name="M:GrpcService.Greeter.GreeterClient.#ctor">
+            <summary>Protected parameterless constructor to allow creation of test doubles.</summary>
+        </member>
+        <member name="M:GrpcService.Greeter.GreeterClient.#ctor(Grpc.Core.ClientBase.ClientBaseConfiguration)">
+            <summary>Protected constructor to allow creation of configured clients.</summary>
+            <param name="configuration">The client configuration.</param>
+        </member>
+        <member name="M:GrpcService.Greeter.GreeterClient.SayHello(GrpcService.HelloRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
             <summary>
-            Configure
+            Sends a greeting
             </summary>
-            <param name="app"></param>
-            <param name="env"></param>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:GrpcService.Greeter.GreeterClient.SayHello(GrpcService.HelloRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Sends a greeting
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:GrpcService.Greeter.GreeterClient.SayHelloAsync(GrpcService.HelloRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Sends a greeting
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:GrpcService.Greeter.GreeterClient.SayHelloAsync(GrpcService.HelloRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Sends a greeting
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:GrpcService.Greeter.GreeterClient.NewInstance(Grpc.Core.ClientBase.ClientBaseConfiguration)">
+            <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
         </member>
     </members>
 </doc>

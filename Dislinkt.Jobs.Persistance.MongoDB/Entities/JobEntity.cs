@@ -7,18 +7,22 @@ namespace Dislinkt.Jobs.Persistance.MongoDB.Entities
     [CollectionName("Jobs")]
     public class JobEntity : BaseEntity
     {
+        public DateTime StartDateTime { get; set; }
+        public DateTime EndDateTime { get; set; }
         public Guid PublisherId { get; set; }
         public string PositionName { get; set; }
         public string Description { get; set; }
-        public string DailyActivities { get; set; }
-        public string Requirements { get; set; }
+        public string[] DailyActivities { get; set; }
+        public string[] Requirements { get; set; }
         public Job ToJob()
-            => new Job(this.Id, this.PublisherId, this.PositionName, this.Description, this.DailyActivities, this.Requirements);
+            => new Job(this.Id, this.StartDateTime,this.EndDateTime,this.PublisherId, this.PositionName, this.Description, this.DailyActivities, this.Requirements);
         public static JobEntity ToJobEntity(Job job)
         {
             return new JobEntity
             {
                 Id = job.Id,
+                StartDateTime=job.StartDateTime,
+                EndDateTime=job.EndDateTime,
                 PublisherId = job.PublisherId,
                 Description = job.Description,
                 DailyActivities = job.DailyActivities,
