@@ -4,6 +4,7 @@ using Dislinkt.Jobs.Application.GetByUserId;
 using Dislinkt.Jobs.Application.SearchJobs.Commands;
 using Dislinkt.Jobs.Domain.Jobs;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using System;
@@ -35,6 +36,7 @@ namespace Dislinkt.Jobs.WebApi.Controllers
         /// <returns>Status of publishing job offer</returns>
         /// /// <param name="jobOfferData">for job</param>
         [HttpPost]
+        [Authorize]
         [SwaggerOperation(Tags = new[] { ApiTag })]
         [Route("/add-job-offer")]
         public async Task<bool> AddJobAsync(JobOfferData jobOfferData)

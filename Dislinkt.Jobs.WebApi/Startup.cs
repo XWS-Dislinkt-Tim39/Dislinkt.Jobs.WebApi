@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
@@ -17,6 +18,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Text.Json.Serialization;
 
 namespace Dislinkt.Jobs.WebApi
@@ -45,6 +47,20 @@ namespace Dislinkt.Jobs.WebApi
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
+            var audienceConfig = Configuration.GetSection("Audience");
+            var signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(audienceConfig["Secret"]));
+            var tokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = signingKey,
+                ValidateIssuer = true,
+                ValidIssuer = audienceConfig["Iss"],
+                ValidateAudience = true,
+                ValidAudience = audienceConfig["Aud"],
+                ValidateLifetime = true,
+                ClockSkew = TimeSpan.Zero,
+                RequireExpirationTime = true,
+            };
             services.AddMvc();
             services.AddCors(options =>
             {
@@ -74,6 +90,15 @@ namespace Dislinkt.Jobs.WebApi
                 c.IncludeXmlComments(xmlPath);
 
             });
+            services.AddAuthentication(o =>
+            {
+                o.DefaultAuthenticateScheme = "Auth_key";
+            })
+          .AddJwtBearer("Auth_key", x =>
+          {
+              x.RequireHttpsMetadata = false;
+              x.TokenValidationParameters = tokenValidationParameters;
+          });
             services.Configure<MongoSettings>(options =>
             {
                 options.Connection = Configuration.GetSection("MongoSettings:ConnectionString").Value;
@@ -117,8 +142,8 @@ namespace Dislinkt.Jobs.WebApi
                 .AllowAnyHeader();
             });
 
+            app.UseAuthentication();
             app.UseRouting();
-
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
