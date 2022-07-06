@@ -6,8 +6,8 @@ namespace Dislinkt.Jobs.Persistance.MongoDB.Factories
     {
         public IMongoDatabase Create()
         {
-            var mongoClient = new MongoClient("mongodb+srv://aleksandramitro:SifrazaMongo99!@cluster0.qmuvt.mongodb.net/xml?retryWrites=true&w=majority");
-            return mongoClient.GetDatabase("xml");
+            var mongoClient = new MongoClient("mongodb://localhost:27017");
+            return mongoClient.GetDatabase("JobDB");
         }
     }
 }

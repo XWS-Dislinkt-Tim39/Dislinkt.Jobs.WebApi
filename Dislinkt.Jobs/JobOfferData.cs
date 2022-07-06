@@ -6,8 +6,15 @@ using System.Threading.Tasks;
 
 namespace Dislinkt.Jobs
 {
-    public class JobOfferData
-    {
+    public class JobOfferData { 
+        /// <summary>
+        /// start date time
+        /// </summary>
+        public DateTime StartDateTime { get; set; }
+        /// <summary>
+        /// start date time
+        /// </summary>
+        public DateTime EndDateTime { get; set; }
         /// <summary>
         /// Publisher id
         /// </summary>
@@ -23,10 +30,10 @@ namespace Dislinkt.Jobs
         /// <summary>
         /// Daily activities
         /// </summary>
-        public string DailyActivities { get; set; }
+        public string[] DailyActivities { get; set; }
         /// <summary>
         /// Requirements
         /// </summary>
-        public string Requirements { get; set; }
+        public string[] Requirements { get; set; }
     }
 }
