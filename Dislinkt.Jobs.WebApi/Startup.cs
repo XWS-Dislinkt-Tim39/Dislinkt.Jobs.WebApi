@@ -18,6 +18,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text.Json.Serialization;
+using Prometheus;
 
 namespace Dislinkt.Jobs.WebApi
 {
@@ -118,12 +119,14 @@ namespace Dislinkt.Jobs.WebApi
             });
 
             app.UseRouting();
+            app.UseHttpMetrics();
 
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapMetrics();
             });
         }
     }
