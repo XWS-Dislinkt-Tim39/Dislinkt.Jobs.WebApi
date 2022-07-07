@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dislinkt.Jobs.WebApi", "Dislinkt.Jobs.WebApi\Dislinkt.Jobs.WebApi.csproj", "{0989E87E-D69F-43E2-82A1-0201E4247287}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dislinkt.Jobs.WebApi", "Dislinkt.Jobs.WebApi\Dislinkt.Jobs.WebApi.csproj", "{0989E87E-D69F-43E2-82A1-0201E4247287}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dislinkt.Jobs", "Dislinkt.Jobs\Dislinkt.Jobs.csproj", "{29928BCE-B306-4BE4-9FA4-6D9B99591201}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dislinkt.Jobs.Domain", "Dislinkt.Jobs.Domain\Dislinkt.Jobs.Domain.csproj", "{F8DE0549-568C-41E0-B922-34CD729A6018}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dislinkt.Jobs.Persistance.MongoDB", "Dislinkt.Jobs.Persistance.MongoDB\Dislinkt.Jobs.Persistance.MongoDB.csproj", "{E8698296-1404-4019-AE18-6600C7F91FF7}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{337C6E4C-DDB8-4F97-94FC-1429B05D1C7D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{E8698296-1404-4019-AE18-6600C7F91FF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8698296-1404-4019-AE18-6600C7F91FF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8698296-1404-4019-AE18-6600C7F91FF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{337C6E4C-DDB8-4F97-94FC-1429B05D1C7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{337C6E4C-DDB8-4F97-94FC-1429B05D1C7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{337C6E4C-DDB8-4F97-94FC-1429B05D1C7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{337C6E4C-DDB8-4F97-94FC-1429B05D1C7D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
