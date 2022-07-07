@@ -122,6 +122,7 @@ namespace Dislinkt.Jobs.WebApi
         /// <param name="env"></param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseMetricServer();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
