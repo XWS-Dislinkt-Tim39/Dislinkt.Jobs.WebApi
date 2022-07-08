@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dislinkt.Jobs.Domain.Jobs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,5 +36,9 @@ namespace Dislinkt.Jobs
         /// Requirements
         /// </summary>
         public string[] Requirements { get; set; }
+        /// <summary>
+        /// Seniority
+        /// </summary>
+        public Seniority Seniority { get; set; }
     }
 }

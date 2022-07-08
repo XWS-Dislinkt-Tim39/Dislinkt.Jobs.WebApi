@@ -19,7 +19,8 @@ namespace Dislinkt.Jobs.Application.AddJobOffer.Commands
         public async Task<bool> Handle(AddJobOfferCommand request, CancellationToken cancellationToken)
         {
             await _jobRepository.AddJobAsync(new Job(Guid.NewGuid(), request.Request.StartDateTime, request.Request.EndDateTime, request.Request.PublisherId,
-                request.Request.PositionName, request.Request.Description, request.Request.DailyActivities, request.Request.Requirements));
+                request.Request.PositionName, request.Request.Description, request.Request.DailyActivities, 
+                request.Request.Requirements, request.Request.Seniority));
 
             return true;
         }

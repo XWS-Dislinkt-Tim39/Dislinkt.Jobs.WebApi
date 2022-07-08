@@ -246,6 +246,12 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Dislinkt.Jobs.Domain\Dislinkt.Jobs.Domain.csproj">
+      <Project>{F8DE0549-568C-41E0-B922-34CD729A6018}</Project>
+      <Name>Dislinkt.Jobs.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -1,6 +1,7 @@
 ﻿using Dislinkt.Jobs.Domain.Jobs;
 using Dislinkt.Jobs.Persistance.MongoDB.Attributes;
 using System;
+using MongoDB.Driver.GeoJsonObjectModel.Serializers;
 
 namespace Dislinkt.Jobs.Persistance.MongoDB.Entities
 {
@@ -14,8 +15,10 @@ namespace Dislinkt.Jobs.Persistance.MongoDB.Entities
         public string Description { get; set; }
         public string[] DailyActivities { get; set; }
         public string[] Requirements { get; set; }
+        public Seniority Seniority { get; set; }
         public Job ToJob()
-            => new Job(this.Id, this.StartDateTime,this.EndDateTime,this.PublisherId, this.PositionName, this.Description, this.DailyActivities, this.Requirements);
+            => new Job(this.Id, this.StartDateTime,this.EndDateTime,this.PublisherId, this.PositionName, this.Description, this.DailyActivities, 
+                this.Requirements, this.Seniority);
         public static JobEntity ToJobEntity(Job job)
         {
             return new JobEntity
@@ -27,7 +30,8 @@ namespace Dislinkt.Jobs.Persistance.MongoDB.Entities
                 Description = job.Description,
                 DailyActivities = job.DailyActivities,
                 PositionName = job.PositionName,
-                Requirements = job.Requirements
+                Requirements = job.Requirements,
+                Seniority = job.Seniority
             };
         }
     }
