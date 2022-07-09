@@ -4,6 +4,7 @@ using Dislinkt.Jobs.Application.GetByUserId;
 using Dislinkt.Jobs.Application.SearchJobs.Commands;
 using Dislinkt.Jobs.Domain.Jobs;
 using Grpc.Net.Client;
+using GrpcAddActivityService;
 using GrpcAddNotificationService;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -60,6 +61,19 @@ namespace Dislinkt.Jobs.WebApi.Controllers
 
                 Debug.WriteLine("Uspesno prosledjen na registraciju u notifikacijama -- " + reply.Message);
             }
+
+            var channel2 = GrpcChannel.ForAddress("https://localhost:5003/");
+            var client2 = new addActivityGreeter.addActivityGreeterClient(channel2);
+            var reply2 = client2.addActivity(new ActivityRequest { UserId = jobOfferData.PublisherId.ToString(), Text = "Created job offer", Type = "Job", Date = DateTime.Now.AddHours(2).ToString() });
+
+            if (!reply2.Successful)
+            {
+                Debug.WriteLine("Doslo je do greske prilikom kreiranja eventa za admina");
+                return false;
+            }
+
+            Debug.WriteLine("Uspesno prosledjen na dashboard kod admina-- " + reply2.Message);
+
 
             return true;
 
