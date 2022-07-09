@@ -13,8 +13,10 @@ namespace Dislinkt.Jobs.Domain.Jobs
         public string Description { get; }
         public string[] DailyActivities { get; }
         public string[] Requirements { get; }
+        public Seniority Seniority { get; }
 
-        public Job(Guid id,DateTime startDateTime,DateTime endDateTime, Guid publisherId, string positionName, string description, string[] dailyActivities, string[] requirements)
+        public Job(Guid id,DateTime startDateTime,DateTime endDateTime, Guid publisherId, string positionName, string description, 
+            string[] dailyActivities, string[] requirements, Seniority seniority)
         {
             Id = id;
             StartDateTime = startDateTime;
@@ -24,6 +26,7 @@ namespace Dislinkt.Jobs.Domain.Jobs
             Description = description;
             DailyActivities = dailyActivities;
             Requirements = requirements;
+            Seniority = seniority;
         }
     }
 }

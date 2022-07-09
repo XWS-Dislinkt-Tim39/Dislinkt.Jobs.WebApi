@@ -20,6 +20,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Text.Json.Serialization;
+using Prometheus;
 
 namespace Dislinkt.Jobs.WebApi
 {
@@ -121,6 +122,7 @@ namespace Dislinkt.Jobs.WebApi
         /// <param name="env"></param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseMetricServer();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -144,11 +146,14 @@ namespace Dislinkt.Jobs.WebApi
 
             app.UseAuthentication();
             app.UseRouting();
+            app.UseHttpMetrics();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapMetrics();
             });
         }
     }
