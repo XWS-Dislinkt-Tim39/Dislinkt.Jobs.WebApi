@@ -59,21 +59,26 @@
     <Compile Include="Common\IQueryExecutor.cs" />
     <Compile Include="Common\Neo4jDbContext.cs" />
     <Compile Include="Common\QueryExecutor.cs" />
+    <Compile Include="Entites\BaseEntity.cs" />
+    <Compile Include="Entites\JobEntity.cs" />
     <Compile Include="Factory\DatabaseFactory.cs" />
     <Compile Include="Factory\IDatabaseFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\JobRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Entites\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Dislinkt.Jobs.Core\Dislinkt.Jobs.Core.csproj">
       <Project>{505D25CC-A86A-44DB-AA51-90C77C415E8F}</Project>
       <Name>Dislinkt.Jobs.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dislinkt.Jobs.Domain\Dislinkt.Jobs.Domain.csproj">
+      <Project>{F8DE0549-568C-41E0-B922-34CD729A6018}</Project>
+      <Name>Dislinkt.Jobs.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
