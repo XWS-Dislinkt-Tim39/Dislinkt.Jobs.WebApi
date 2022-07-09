@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 
 namespace Dislinkt.Jobs.Persistence.Neo4j.Repositories
 {
-    public class JobRepository : IJobGraphRepository
+    public class JobGraphRepository : IJobGraphRepository
     {
         private readonly IQueryExecutor _queryExecutor;
-        public JobRepository(IQueryExecutor queryExecutor)
+        public JobGraphRepository(IQueryExecutor queryExecutor)
         {
             _queryExecutor = queryExecutor;
         }

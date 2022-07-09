@@ -1,7 +1,8 @@
 using Dislinkt.Jobs.Application.AddJobOffer.Commands;
 using Dislinkt.Jobs.Core.Repositories;
 using Dislinkt.Jobs.Persistance.MongoDB.Common;
-using Dislinkt.Jobs.Persistance.MongoDB.Factories;
+using IDatabaseFactory = Dislinkt.Jobs.Persistance.MongoDB.Factories.IDatabaseFactory;
+using DatabaseFactory = Dislinkt.Jobs.Persistance.MongoDB.Factories.DatabaseFactory;
 using Dislinkt.Jobs.Persistance.MongoDB.Repositories;
 using IQueryExecutor = Dislinkt.Jobs.Persistance.MongoDB.Common.IQueryExecutor;
 using QueryExecutor = Dislinkt.Jobs.Persistance.MongoDB.Common.QueryExecutor;
@@ -111,13 +112,16 @@ namespace Dislinkt.Jobs.WebApi
             });
             services.AddMediatR(typeof(AddJobOfferCommand).GetTypeInfo().Assembly);
             services.AddScoped<IDatabaseFactory, DatabaseFactory>();
+            services.AddScoped<Persistence.Neo4j.Factory.IDatabaseFactory, Persistence.Neo4j.Factory.DatabaseFactory>();
 
             services.AddScoped<IQueryExecutor, QueryExecutor>();
             services.AddScoped<Persistence.Neo4j.Common.IQueryExecutor, Persistence.Neo4j.Common.QueryExecutor>();
             services.AddScoped<IJobRepository, JobRepository>();
+            services.AddScoped<IJobGraphRepository, JobGraphRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
 
             services.AddScoped<MongoDbContext>();
+            services.AddScoped<Neo4jDbContext>();
 
             BsonSerializer.RegisterSerializer(new GuidSerializer(BsonType.String));
         }
