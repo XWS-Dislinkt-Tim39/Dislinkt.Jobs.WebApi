@@ -3,12 +3,15 @@ using Dislinkt.Jobs.Application.GetAllJobs.Commands;
 using Dislinkt.Jobs.Application.GetByUserId;
 using Dislinkt.Jobs.Application.SearchJobs.Commands;
 using Dislinkt.Jobs.Domain.Jobs;
+using Grpc.Net.Client;
+using GrpcAddNotificationService;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -41,7 +44,24 @@ namespace Dislinkt.Jobs.WebApi.Controllers
         [Route("/add-job-offer")]
         public async Task<bool> AddJobAsync(JobOfferData jobOfferData)
         {
-            return await _mediator.Send(new AddJobOfferCommand(jobOfferData));
+             await _mediator.Send(new AddJobOfferCommand(jobOfferData));
+
+            var channel = GrpcChannel.ForAddress("https://localhost:5002/");
+            var client = new addNotificationGreeter.addNotificationGreeterClient(channel);
+            foreach (string item in jobOfferData.followersId)
+            {
+                var reply = client.addNotification(new NotificationRequest { UserId = item, From = jobOfferData.PublisherId.ToString(), Type = "Job", Seen = false });
+
+                if (!reply.Successful)
+                {
+                    Debug.WriteLine("Doslo je do greske prilikom kreiranja notifikacija za usera");
+                    return false;
+                }
+
+                Debug.WriteLine("Uspesno prosledjen na registraciju u notifikacijama -- " + reply.Message);
+            }
+
+            return true;
 
         }
         /// <summary>

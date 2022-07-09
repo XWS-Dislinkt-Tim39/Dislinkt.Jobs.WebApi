@@ -7,18 +7,11 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>C:\Users\Natalija\OneDrive\Documents\Dislinkt\Dislinkt.Jobs.WebApi\Dislinkt.Jobs.WebApi\Dislinkt.Jobs.WebApi.xml</DocumentationFile>
   </PropertyGroup>
+
  <ItemGroup>  
   <Protobuf Remove="Protos\addNotification.proto" />  
   </ItemGroup> 
   <ItemGroup>
-    <PackageReference Include="Google.Protobuf" Version="3.21.2" />
-    <PackageReference Include="Grpc.Core.Api" Version="2.46.1" />
-    <PackageReference Include="Grpc.Net.Client" Version="2.46.0" />
-    <PackageReference Include="Grpc.Net.Common" Version="2.46.0" />
-    <PackageReference Include="Grpc.Tools" Version="2.46.3">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
     <PackageReference Include="MediatR" Version="8.0.1" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.24" />
@@ -36,8 +29,6 @@
     <ProjectReference Include="..\Dislinkt.Jobs.Persistance.MongoDB\Dislinkt.Jobs.Persistance.MongoDB.csproj" />
     <ProjectReference Include="..\Dislinkt.Jobs\Dislinkt.Jobs.csproj" />
   </ItemGroup>
-   <ItemGroup>  
-  <Protobuf Include="Protos\addNotification.proto" GrpcServices="Client" />  
-  </ItemGroup> 
+
 
 </Project>
