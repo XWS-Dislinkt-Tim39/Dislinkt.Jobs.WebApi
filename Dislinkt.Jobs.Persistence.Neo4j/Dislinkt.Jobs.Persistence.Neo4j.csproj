@@ -70,7 +70,9 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Scripts\skills skripta.txt" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Dislinkt.Jobs.Core\Dislinkt.Jobs.Core.csproj">
       <Project>{505D25CC-A86A-44DB-AA51-90C77C415E8F}</Project>
