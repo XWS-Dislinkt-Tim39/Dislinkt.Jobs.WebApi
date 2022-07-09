@@ -1,6 +1,7 @@
 ﻿using Dislinkt.Jobs.Core.Repositories;
 using Dislinkt.Jobs.Domain.Jobs;
 using Dislinkt.Jobs.Persistence.Neo4j.Common;
+using Dislinkt.Jobs.Persistence.Neo4j.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Dislinkt.Jobs.Persistence.Neo4j.Repositories
 {
-    public class JobRepository : IJobRepository
+    public class JobRepository : IJobGraphRepository
     {
         private readonly IQueryExecutor _queryExecutor;
         public JobRepository(IQueryExecutor queryExecutor)
@@ -21,38 +22,13 @@ namespace Dislinkt.Jobs.Persistence.Neo4j.Repositories
         {
             try
             {
-                await _queryExecutor.CreateAsync(JobEntity.ToJobEntity(job));
-
+                await _queryExecutor.CreateAsync(JobEntity.ToJobEntity(job), "JOB");
             }
-            catch (MongoWriteException ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
         }
 
-        public async Task<IReadOnlyList<Job>> SearchJobs(string searchParameter)
-        {
-            var filter = Builders<JobEntity>.Filter.Regex("PositionName", BsonRegularExpression.Create(new Regex(searchParameter, RegexOptions.IgnoreCase)));
-
-            var result = await _queryExecutor.FindAsync(filter);
-
-            return result?.AsEnumerable()?.Select(s => s.ToJob())?.ToArray() ?? Array.Empty<Job>();
-        }
-
-        public async Task<IReadOnlyCollection<Job>> GetAllAsync()
-        {
-            var result = await _queryExecutor.GetAll<JobEntity>();
-
-            return result?.AsEnumerable().Select(s => s.ToJob()).ToArray() ?? Array.Empty<Job>();
-        }
-
-        public async Task<IReadOnlyCollection<Job>> GetByUserId(Guid userId)
-        {
-            var filter = Builders<JobEntity>.Filter.Eq(u => u.PublisherId, userId);
-
-            var result = await _queryExecutor.FindAsync(filter);
-
-            return result?.AsEnumerable().Select(s => s.ToJob()).ToArray() ?? Array.Empty<Job>();
-        }
     }
 }
