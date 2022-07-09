@@ -3,6 +3,9 @@ using Dislinkt.Jobs.Core.Repositories;
 using Dislinkt.Jobs.Persistance.MongoDB.Common;
 using Dislinkt.Jobs.Persistance.MongoDB.Factories;
 using Dislinkt.Jobs.Persistance.MongoDB.Repositories;
+using IQueryExecutor = Dislinkt.Jobs.Persistance.MongoDB.Common.IQueryExecutor;
+using QueryExecutor = Dislinkt.Jobs.Persistance.MongoDB.Common.QueryExecutor;
+using Dislinkt.Jobs.Persistence.Neo4j.Common;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -21,6 +24,7 @@ using System.Reflection;
 using System.Text;
 using System.Text.Json.Serialization;
 using Prometheus;
+using Dislinkt.Jobs.Persistence.Neo4j.Repositories;
 
 namespace Dislinkt.Jobs.WebApi
 {
@@ -107,8 +111,11 @@ namespace Dislinkt.Jobs.WebApi
             });
             services.AddMediatR(typeof(AddJobOfferCommand).GetTypeInfo().Assembly);
             services.AddScoped<IDatabaseFactory, DatabaseFactory>();
+
             services.AddScoped<IQueryExecutor, QueryExecutor>();
+            services.AddScoped<Persistence.Neo4j.Common.IQueryExecutor, Persistence.Neo4j.Common.QueryExecutor>();
             services.AddScoped<IJobRepository, JobRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             services.AddScoped<MongoDbContext>();
 
