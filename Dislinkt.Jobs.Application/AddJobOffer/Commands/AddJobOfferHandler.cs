@@ -26,7 +26,7 @@ namespace Dislinkt.Jobs.Application.AddJobOffer.Commands
                 Job job = new Job(Guid.NewGuid(), request.Request.StartDateTime, request.Request.EndDateTime, request.Request.PublisherId,
                 request.Request.PositionName, request.Request.Description, request.Request.DailyActivities,
                 request.Request.Requirements, request.Request.Seniority);
-                //await _jobRepository.AddJobAsync(job);
+                await _jobRepository.AddJobAsync(job);
                 await _jobGraphRepository.AddJobAsync(job);
             }
             catch (Exception e)
