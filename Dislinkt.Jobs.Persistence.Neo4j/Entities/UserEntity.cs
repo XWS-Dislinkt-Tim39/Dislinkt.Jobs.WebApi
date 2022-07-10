@@ -13,6 +13,15 @@ namespace Dislinkt.Jobs.Persistence.Neo4j.Entities
         public string Username { get; set; }
         public Seniority Seniority { get; set; }
 
+        public UserEntity(Guid id, string username, Seniority seniority)
+        {
+            Id = id;
+            Username = username;
+            Seniority = seniority;
+        }
+
+        public UserEntity(){}
+
         public User ToUser()
         => new User(Id, Username, Seniority);
 

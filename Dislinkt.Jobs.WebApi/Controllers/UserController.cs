@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Dislinkt.Jobs.Application.AddUser.Commands;
 using Dislinkt.Jobs.Application.AssignSkill.Commands;
+using Dislinkt.Jobs.Application.GetJobRecommendations.Commands;
 using Dislinkt.Jobs.Application.RemoveSkill.Commands;
+using Dislinkt.Jobs.Domain.Jobs;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -70,6 +72,20 @@ namespace Dislinkt.Jobs.WebApi.Controllers
         public async Task<bool> RemoveSkill(AssignSkillData assignSkillData)
         {
             return await _mediator.Send(new RemoveSkillCommand(assignSkillData));
+        }
+
+        /// <summary>
+        /// Recommends jobs for a user
+        /// </summary>
+        /// <returns>List of recommended jobs</returns>
+        /// /// <param name="sourceId">for user</param>
+        [HttpGet]
+        //[Authorize]
+        [SwaggerOperation(Tags = new[] { ApiTag })]
+        [Route("/getJobRecommendations")]
+        public async Task<IReadOnlyList<Job>> GetJobRecommendations(Guid sourceId)
+        {
+            return await _mediator.Send(new GetJobRecommendationsCommand(sourceId));
         }
 
     }

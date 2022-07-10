@@ -26,5 +26,15 @@ namespace Dislinkt.Jobs.Persistence.Neo4j.Common
 
         public async Task<IReadOnlyList<Guid>> GetConnectedAsync(Guid sourceId, string connectionType)
             => await _neo4jDbContext.GetConnected(sourceId, connectionType);
+
+        public async Task<T> FindByIdAsync<T>(Guid id) where T : BaseEntity
+            => await _neo4jDbContext.FindByIdAsync<T>(id);
+
+        public async Task<IReadOnlyList<T>> GetCommonNodeWithCondition<T>(Guid sourceId, string sourceLabel,
+            string targetLabel,
+            string sourceConnectionLabel, string targetConnectionLabel, string conditionAttribute,
+            string commonNodeLabel) where T : BaseEntity
+            => await _neo4jDbContext.GetCommonNodeWithCondition<T>(sourceId, sourceLabel, targetLabel,
+                sourceConnectionLabel, targetConnectionLabel, conditionAttribute, commonNodeLabel);
     }
 }

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace Dislinkt.Jobs.Persistence.Neo4j.Common
 {
@@ -109,6 +110,71 @@ namespace Dislinkt.Jobs.Persistence.Neo4j.Common
                 throw;
             }
 
+        }
+
+        public async Task<T> FindByIdAsync<T>(Guid id) where T : BaseEntity
+        {
+            var query = @"
+                MATCH (u:User)
+                WHERE u.Id = $id
+                RETURN u";
+
+            IAsyncSession session = _databaseFactory.Create().AsyncSession();
+            try
+            {
+                var readResult = await session.ReadTransactionAsync(async tx =>
+                    {
+                        IResultCursor result = await tx.RunAsync(query, new { id = id });
+                        return result.SingleAsync().As<T>();
+                    }
+                );
+
+                return readResult;
+            }
+            catch (Neo4jException ex)
+            {
+                Trace.WriteLine($"{query} - {ex}");
+                throw;
+            }
+        }
+
+        public async Task<IReadOnlyList<T>> GetCommonNodeWithCondition<T>(Guid sourceId, string sourceLabel, string targetLabel,
+            string sourceConnectionLabel, string targetConnectionLabel, string conditionAttribute, string commonNodeLabel) where T : BaseEntity
+        {
+            var query = $"MATCH (n:{sourceLabel}), (m:{commonNodeLabel}), (j:{targetLabel}) " +
+                        $"WHERE n.Id = \"{sourceId}\" " +
+                        $"AND (n)-[:{sourceConnectionLabel}]-> (m) <-[:{targetConnectionLabel}]-(j) " +
+                        $"AND n.{conditionAttribute} = j.{conditionAttribute} " +
+                        $"RETURN j";
+
+            IAsyncSession session = _databaseFactory.Create().AsyncSession();
+            try
+            {
+                var readResult = await session.ReadTransactionAsync(async tx =>
+                    {
+                        IResultCursor result = await tx.RunAsync(query);
+                        return await result.ToListAsync();
+                    }
+                );
+
+                if (readResult.Count == 0)
+                    return null;
+
+                var retVal = new List<T>();
+
+                foreach (var record in readResult)
+                {
+                    var nodeProps = JsonConvert.SerializeObject(record[0].As<INode>().Properties);
+                    retVal.Add(JsonConvert.DeserializeObject<T>(nodeProps));
+                }
+
+                return retVal;
+            }
+            catch (Neo4jException ex)
+            {
+                Trace.WriteLine($"{query} - {ex}");
+                throw;
+            }
         }
     }
 }

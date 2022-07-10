@@ -77,6 +77,13 @@
             <returns>Status of remove a skill from a user</returns>
             /// <param name="assignSkillData">for job</param>
         </member>
+        <member name="M:Dislinkt.Jobs.WebApi.Controllers.UserController.GetJobRecommendations(System.Guid)">
+            <summary>
+            Recommends jobs for a user
+            </summary>
+            <returns>List of recommended jobs</returns>
+            /// <param name="sourceId">for user</param>
+        </member>
         <member name="T:Dislinkt.Jobs.WebApi.Startup">
             <summary>
             Startup class

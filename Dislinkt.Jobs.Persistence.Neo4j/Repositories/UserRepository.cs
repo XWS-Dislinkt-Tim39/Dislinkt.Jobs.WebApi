@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Dislinkt.Jobs.Domain.Jobs;
 
 namespace Dislinkt.Jobs.Persistence.Neo4j.Repositories
 {
@@ -32,6 +33,15 @@ namespace Dislinkt.Jobs.Persistence.Neo4j.Repositories
         public async Task RemoveSkillAsync(Guid userId, Guid skillId)
         {
             await _queryExecutor.RemoveConnectionAsync(userId, skillId, "HAS_SKILL");
+        }
+
+        public async Task<IReadOnlyList<Job>> GetJobRecommendationsAsync(Guid userId)
+        {
+            var results = await _queryExecutor.GetCommonNodeWithCondition<JobEntity>(userId, "USER", "JOB", "HAS_SKILL",
+                    "REQUIRES", "Seniority", "SKILL");
+            List<Job> retVal = results.Select(result => result.ToJob()).ToList() ?? new List<Job>();
+
+            return retVal;
         }
     }
 }
