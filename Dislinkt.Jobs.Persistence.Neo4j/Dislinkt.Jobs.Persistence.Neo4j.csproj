@@ -62,6 +62,7 @@
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\JobEntity.cs" />
     <Compile Include="Entities\SkillEntity.cs" />
+    <Compile Include="Entities\UserEntity.cs" />
     <Compile Include="Factory\DatabaseFactory.cs" />
     <Compile Include="Factory\IDatabaseFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

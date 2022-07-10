@@ -9,6 +9,9 @@ namespace Dislinkt.Jobs.Persistence.Neo4j.Repositories
 {
     public class UserRepository : IUserRepository
     {
+        public async Task AddUserAsync(User user)
+        {
 
+        }
     }
 }
