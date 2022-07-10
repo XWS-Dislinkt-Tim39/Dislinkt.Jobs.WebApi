@@ -244,6 +244,8 @@
     <Compile Include="AddJobOffer\Commands\AddJobOfferHandler.cs" />
     <Compile Include="AddSkill\Commands\AddSkillCommand.cs" />
     <Compile Include="AddSkill\Commands\AddSkillHandler.cs" />
+    <Compile Include="AddUser\Commands\AddUserCommand.cs" />
+    <Compile Include="AddUser\Commands\AddUserHandler.cs" />
     <Compile Include="AssignSkill\Commands\AssignSkillCommand.cs" />
     <Compile Include="AssignSkill\Commands\AssignSkillHandler.cs" />
     <Compile Include="GetAllJobs\Commands\GetAllJobsCommand.cs" />

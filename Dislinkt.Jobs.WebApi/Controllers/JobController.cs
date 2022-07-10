@@ -19,7 +19,7 @@ using System.Threading.Tasks;
 namespace Dislinkt.Jobs.WebApi.Controllers
 {
     /// <summary>
-    /// Jobs controler
+    /// Jobs controller
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
