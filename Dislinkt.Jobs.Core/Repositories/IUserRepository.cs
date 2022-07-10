@@ -12,5 +12,7 @@ namespace Dislinkt.Jobs.Core.Repositories
         Task AddUserAsync(User user);
 
         Task AddSkillAsync(Guid userId, Guid skillId);
+
+        Task RemoveSkillAsync(Guid userId, Guid skillId);
     }
 }

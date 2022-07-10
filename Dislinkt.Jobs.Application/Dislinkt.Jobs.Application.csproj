@@ -251,6 +251,8 @@
     <Compile Include="GetByUserId\GetByUserIdCommand.cs" />
     <Compile Include="GetByUserId\GetByUserIdHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RemoveSkill\Commands\RemoveSkillCommand.cs" />
+    <Compile Include="RemoveSkill\Commands\RemoveSkillHandler.cs" />
     <Compile Include="SearchJobs\Commands\SearchJobsCommand.cs" />
     <Compile Include="SearchJobs\Commands\SearchJobsHandler.cs" />
   </ItemGroup>
