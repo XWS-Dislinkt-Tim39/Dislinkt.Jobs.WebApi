@@ -1,8 +1,12 @@
 using Dislinkt.Jobs.Application.AddJobOffer.Commands;
 using Dislinkt.Jobs.Core.Repositories;
 using Dislinkt.Jobs.Persistance.MongoDB.Common;
-using Dislinkt.Jobs.Persistance.MongoDB.Factories;
+using IDatabaseFactory = Dislinkt.Jobs.Persistance.MongoDB.Factories.IDatabaseFactory;
+using DatabaseFactory = Dislinkt.Jobs.Persistance.MongoDB.Factories.DatabaseFactory;
 using Dislinkt.Jobs.Persistance.MongoDB.Repositories;
+using IQueryExecutor = Dislinkt.Jobs.Persistance.MongoDB.Common.IQueryExecutor;
+using QueryExecutor = Dislinkt.Jobs.Persistance.MongoDB.Common.QueryExecutor;
+using Dislinkt.Jobs.Persistence.Neo4j.Common;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,6 +32,7 @@ using Microsoft.Extensions.Logging;
 using OpenTracing;
 using OpenTracing.Contrib.NetCore.Configuration;
 using Prometheus;
+using Dislinkt.Jobs.Persistence.Neo4j.Repositories;
 
 namespace Dislinkt.Jobs.WebApi
 {
@@ -134,10 +139,17 @@ namespace Dislinkt.Jobs.WebApi
                     request => $"{request.Method.Method}: {request?.RequestUri?.AbsoluteUri}");
             services.AddMediatR(typeof(AddJobOfferCommand).GetTypeInfo().Assembly);
             services.AddScoped<IDatabaseFactory, DatabaseFactory>();
+            services.AddScoped<Persistence.Neo4j.Factory.IDatabaseFactory, Persistence.Neo4j.Factory.DatabaseFactory>();
+
             services.AddScoped<IQueryExecutor, QueryExecutor>();
+            services.AddScoped<Persistence.Neo4j.Common.IQueryExecutor, Persistence.Neo4j.Common.QueryExecutor>();
             services.AddScoped<IJobRepository, JobRepository>();
+            services.AddScoped<IJobGraphRepository, JobGraphRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ISkillRepository, SkillRepository>();
 
             services.AddScoped<MongoDbContext>();
+            services.AddScoped<Neo4jDbContext>();
 
             BsonSerializer.RegisterSerializer(new GuidSerializer(BsonType.String));
         }

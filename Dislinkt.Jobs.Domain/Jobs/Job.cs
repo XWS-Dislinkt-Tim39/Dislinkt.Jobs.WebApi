@@ -28,5 +28,11 @@ namespace Dislinkt.Jobs.Domain.Jobs
             Requirements = requirements;
             Seniority = seniority;
         }
+        public Job(Guid id, string positionName, Seniority seniority)
+        {
+            Id = id;
+            PositionName = positionName;
+            Seniority = seniority;
+        }
     }
 }
