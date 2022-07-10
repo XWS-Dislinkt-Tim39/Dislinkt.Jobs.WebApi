@@ -21,7 +21,7 @@ namespace Dislinkt.Jobs.Persistence.Neo4j.Repositories
 
         public async Task AddSkill(Skill skill)
         {
-            await _queryExecutor.CreateAsync<SkillEntity>(SkillEntity.ToSkillEntity(skill), ":SKILL");
+            await _queryExecutor.CreateAsync<SkillEntity>(SkillEntity.ToSkillEntity(skill), "SKILL");
         }
     }
 }
