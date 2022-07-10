@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Dislinkt.Jobs.Application.AddUser.Commands;
 using Dislinkt.Jobs.Application.AssignSkill.Commands;
+using Dislinkt.Jobs.Application.RemoveSkill.Commands;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -55,6 +56,20 @@ namespace Dislinkt.Jobs.WebApi.Controllers
         public async Task<bool> AssignSkill(AssignSkillData assignSkillData)
         {
             return await _mediator.Send(new AssignSkillCommand(assignSkillData));
+        }
+
+        /// <summary>
+        /// Remove a skill from a user
+        /// </summary>
+        /// <returns>Status of remove a skill from a user</returns>
+        /// /// <param name="assignSkillData">for job</param>
+        [HttpPost]
+        [Authorize]
+        [SwaggerOperation(Tags = new[] { ApiTag })]
+        [Route("/removeSkill")]
+        public async Task<bool> RemoveSkill(AssignSkillData assignSkillData)
+        {
+            return await _mediator.Send(new RemoveSkillCommand(assignSkillData));
         }
 
     }

@@ -25,11 +25,11 @@ namespace Dislinkt.Jobs.Application.AddUser.Commands
             try
             {
                 await _userRepository.AddUserAsync(new User
-                {
-                    Id = request.Request.Id,
-                    Seniority = request.Request.Seniority,
-                    Username = request.Request.Username
-                });
+                (
+                    request.Request.Id,
+                    request.Request.Username,
+                    request.Request.Seniority
+                ));
             }
             catch (Exception e)
             {
