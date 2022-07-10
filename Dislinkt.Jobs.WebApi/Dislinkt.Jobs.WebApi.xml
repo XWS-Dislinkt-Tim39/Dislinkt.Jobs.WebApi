@@ -9,7 +9,7 @@
             Jobs controler
             </summary>
         </member>
-        <member name="M:Dislinkt.Jobs.WebApi.Controllers.JobController.#ctor(MediatR.IMediator)">
+        <member name="M:Dislinkt.Jobs.WebApi.Controllers.JobController.#ctor(MediatR.IMediator,OpenTracing.ITracer)">
             <summary>
             Init of controller
             </summary>

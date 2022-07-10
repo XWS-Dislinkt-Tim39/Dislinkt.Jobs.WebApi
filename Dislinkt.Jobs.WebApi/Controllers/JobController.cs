@@ -69,7 +69,7 @@ namespace Dislinkt.Jobs.WebApi.Controllers
 
             var channel2 = GrpcChannel.ForAddress("https://localhost:5003/");
             var client2 = new addActivityGreeter.addActivityGreeterClient(channel2);
-            var reply2 = client2.addActivity(new ActivityRequest { UserId = jobOfferData.PublisherId.ToString(), Text = "Created job offer", Type = "Job", Date = DateTime.Now.AddHours(2).ToString() });
+            var reply2 = client2.addActivity(new ActivityRequest { UserId = jobOfferData.PublisherId.ToString(), Text = "Created job offer", Type = "Job", Date = DateTime.Now.ToString() });
 
             if (!reply2.Successful)
             {
