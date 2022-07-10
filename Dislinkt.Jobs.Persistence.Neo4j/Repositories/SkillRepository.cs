@@ -14,6 +14,11 @@ namespace Dislinkt.Jobs.Persistence.Neo4j.Repositories
     {
         private readonly IQueryExecutor _queryExecutor;
 
+        public SkillRepository(IQueryExecutor queryExecutor)
+        {
+            _queryExecutor = queryExecutor;
+        }
+
         public async Task AddSkill(Skill skill)
         {
             await _queryExecutor.CreateAsync<SkillEntity>(SkillEntity.ToSkillEntity(skill), ":SKILL");

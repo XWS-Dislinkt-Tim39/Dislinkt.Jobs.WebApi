@@ -6,7 +6,7 @@
     <members>
         <member name="T:Dislinkt.Jobs.WebApi.Controllers.JobController">
             <summary>
-            Jobs controler
+            Jobs controller
             </summary>
         </member>
         <member name="M:Dislinkt.Jobs.WebApi.Controllers.JobController.#ctor(MediatR.IMediator)">
@@ -45,6 +45,37 @@
             <summary>
             Add a skill.
             </summary>
+        </member>
+        <member name="T:Dislinkt.Jobs.WebApi.Controllers.UserController">
+            <summary>
+            Users controller
+            </summary>
+        </member>
+        <member name="M:Dislinkt.Jobs.WebApi.Controllers.UserController.#ctor(MediatR.IMediator)">
+            <summary>
+            Init of controller
+            </summary>
+        </member>
+        <member name="M:Dislinkt.Jobs.WebApi.Controllers.UserController.AddUser(Dislinkt.Jobs.UserData)">
+            <summary>
+            Add new job offer
+            </summary>
+            <returns>Status of publishing job offer</returns>
+            /// <param name="userData">for job</param>
+        </member>
+        <member name="M:Dislinkt.Jobs.WebApi.Controllers.UserController.AssignSkill(Dislinkt.Jobs.AssignSkillData)">
+            <summary>
+            Assigns a skill to a user
+            </summary>
+            <returns>Status of assigning a skill to a user</returns>
+            /// <param name="assignSkillData">for job</param>
+        </member>
+        <member name="M:Dislinkt.Jobs.WebApi.Controllers.UserController.RemoveSkill(Dislinkt.Jobs.AssignSkillData)">
+            <summary>
+            Remove a skill from a user
+            </summary>
+            <returns>Status of remove a skill from a user</returns>
+            /// <param name="assignSkillData">for job</param>
         </member>
         <member name="T:Dislinkt.Jobs.WebApi.Startup">
             <summary>
