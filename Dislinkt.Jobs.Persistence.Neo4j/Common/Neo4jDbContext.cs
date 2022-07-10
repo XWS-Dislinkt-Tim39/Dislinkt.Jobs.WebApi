@@ -49,5 +49,66 @@ namespace Dislinkt.Jobs.Persistence.Neo4j.Common
                 throw;
             }
         }
+
+        public async Task CreateConnectionAsync(Guid sourceId, Guid targetId, string connectionName)
+        {
+            var query = $"MATCH (t1), (t2) " +
+                        $"WHERE t1.Id = \"{sourceId}\" AND t2.Id = \"{targetId}\" " +
+                        $"CREATE (t1)-[:{connectionName}]->(t2)";
+            IAsyncSession session = _databaseFactory.Create().AsyncSession();
+            try
+            {
+                await session.RunAsync(query);
+            }
+            catch (Neo4jException ex)
+            {
+                Trace.WriteLine($"{query} - {ex}");
+                throw;
+            }
+        }
+
+        public async Task RemoveConnectionAsync(Guid sourceId, Guid targetId, string connectionName)
+        {
+            var query = $"MATCH (t1) - [connection:{connectionName}] -> (t2) " +
+                        $"WHERE t1.Id = \"{sourceId}\" AND t2.Id = \"{targetId}\" " +
+                        "DELETE connection";
+            IAsyncSession session = _databaseFactory.Create().AsyncSession();
+            try
+            {
+                await session.RunAsync(query);
+            }
+            catch (Neo4jException ex)
+            {
+                Trace.WriteLine($"{query} - {ex}");
+                throw;
+            }
+        }
+
+        public async Task<IReadOnlyList<Guid>> GetConnected(Guid sourceId, string connectionType)
+        {
+            var query = $"MATCH (n)-[:{connectionType}]->(m) " +
+                        $"WHERE n.Id = \"{sourceId}\" " +
+                        "RETURN m.Id as Id";
+            IAsyncSession session = _databaseFactory.Create().AsyncSession();
+            try
+            {
+                List<IRecord> readResult = await session.ReadTransactionAsync(async tx =>
+                    {
+                        IResultCursor result = await tx.RunAsync(query);
+                        return await result.ToListAsync();
+                    }
+                );
+
+                return readResult.Count == 0
+                    ? null
+                    : readResult.Select(record => Guid.Parse(record["Id"].ToString() ?? string.Empty)).ToList();
+            }
+            catch (Neo4jException ex)
+            {
+                Trace.WriteLine($"{query} - {ex}");
+                throw;
+            }
+
+        }
     }
 }

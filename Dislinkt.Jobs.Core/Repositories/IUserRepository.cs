@@ -10,5 +10,7 @@ namespace Dislinkt.Jobs.Core.Repositories
     public interface IUserRepository
     {
         Task AddUserAsync(User user);
+
+        Task AddSkillAsync(Guid userId, Guid skillId);
     }
 }
