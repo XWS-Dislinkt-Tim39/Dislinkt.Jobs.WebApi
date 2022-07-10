@@ -241,6 +241,7 @@
   <ItemGroup>
     <Compile Include="JobOfferData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SkillData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

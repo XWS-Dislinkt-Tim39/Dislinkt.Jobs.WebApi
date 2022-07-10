@@ -1,4 +1,5 @@
 ﻿using Dislinkt.Jobs.Application.AddJobOffer.Commands;
+using Dislinkt.Jobs.Application.AddSkill.Commands;
 using Dislinkt.Jobs.Application.GetAllJobs.Commands;
 using Dislinkt.Jobs.Application.GetByUserId;
 using Dislinkt.Jobs.Application.SearchJobs.Commands;
@@ -101,6 +102,17 @@ namespace Dislinkt.Jobs.WebApi.Controllers
         public async Task<IReadOnlyCollection<Job>> GetUserJobsAsync(Guid userId)
         {
             return await _mediator.Send(new GetByUserIdCommand(userId));
+        }
+
+        /// <summary>
+        /// Add a skill.
+        /// </summary>
+        [HttpGet]
+        [SwaggerOperation(Tags = new[] { ApiTag })]
+        [Route("/addSkill")]
+        public async Task<bool> AddSkillAsync(SkillData skillData)
+        {
+            return await _mediator.Send(new AddSkillCommand(skillData));
         }
     }
 }

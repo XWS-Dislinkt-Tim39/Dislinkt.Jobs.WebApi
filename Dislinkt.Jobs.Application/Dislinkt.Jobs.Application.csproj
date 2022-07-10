@@ -242,6 +242,8 @@
   <ItemGroup>
     <Compile Include="AddJobOffer\Commands\AddJobOfferCommand.cs" />
     <Compile Include="AddJobOffer\Commands\AddJobOfferHandler.cs" />
+    <Compile Include="AddSkill\Commands\AddSkillCommand.cs" />
+    <Compile Include="AddSkill\Commands\AddSkillHandler.cs" />
     <Compile Include="GetAllJobs\Commands\GetAllJobsCommand.cs" />
     <Compile Include="GetAllJobs\Commands\GetAllJobsHandler.cs" />
     <Compile Include="GetByUserId\GetByUserIdCommand.cs" />
