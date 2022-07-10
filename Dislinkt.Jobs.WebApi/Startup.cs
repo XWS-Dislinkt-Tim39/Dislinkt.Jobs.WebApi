@@ -119,6 +119,7 @@ namespace Dislinkt.Jobs.WebApi
             services.AddScoped<IJobRepository, JobRepository>();
             services.AddScoped<IJobGraphRepository, JobGraphRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ISkillRepository, SkillRepository>();
 
             services.AddScoped<MongoDbContext>();
             services.AddScoped<Neo4jDbContext>();

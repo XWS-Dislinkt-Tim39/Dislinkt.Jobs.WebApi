@@ -41,6 +41,11 @@
             <returns>Get user jobs</returns>
             /// <param name="userId">for job</param>
         </member>
+        <member name="M:Dislinkt.Jobs.WebApi.Controllers.JobController.AddSkillAsync(Dislinkt.Jobs.SkillData)">
+            <summary>
+            Add a skill.
+            </summary>
+        </member>
         <member name="T:Dislinkt.Jobs.WebApi.Startup">
             <summary>
             Startup class

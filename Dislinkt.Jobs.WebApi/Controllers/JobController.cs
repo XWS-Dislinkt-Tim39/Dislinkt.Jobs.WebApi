@@ -107,7 +107,7 @@ namespace Dislinkt.Jobs.WebApi.Controllers
         /// <summary>
         /// Add a skill.
         /// </summary>
-        [HttpGet]
+        [HttpPost]
         [SwaggerOperation(Tags = new[] { ApiTag })]
         [Route("/addSkill")]
         public async Task<bool> AddSkillAsync(SkillData skillData)
