@@ -24,6 +24,13 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Text.Json.Serialization;
+using Jaeger;
+using Jaeger.Reporters;
+using Jaeger.Samplers;
+using Jaeger.Senders.Thrift;
+using Microsoft.Extensions.Logging;
+using OpenTracing;
+using OpenTracing.Contrib.NetCore.Configuration;
 using Prometheus;
 using Dislinkt.Jobs.Persistence.Neo4j.Repositories;
 
@@ -100,16 +107,36 @@ namespace Dislinkt.Jobs.WebApi
             {
                 o.DefaultAuthenticateScheme = "Auth_key";
             })
-          .AddJwtBearer("Auth_key", x =>
-          {
-              x.RequireHttpsMetadata = false;
-              x.TokenValidationParameters = tokenValidationParameters;
-          });
+              .AddJwtBearer("Auth_key", x =>
+              {
+                  x.RequireHttpsMetadata = false;
+                  x.TokenValidationParameters = tokenValidationParameters;
+              });
             services.Configure<MongoSettings>(options =>
             {
                 options.Connection = Configuration.GetSection("MongoSettings:ConnectionString").Value;
                 options.DatabaseName = Configuration.GetSection("MongoSettings:DatabaseName").Value;
             });
+            services.AddOpenTracing();
+            // Adds the Jaeger Tracer.
+            services.AddSingleton<ITracer>(sp =>
+            {
+                var serviceName = sp.GetRequiredService<IWebHostEnvironment>().ApplicationName;
+                var loggerFactory = sp.GetRequiredService<ILoggerFactory>();
+                var reporter = new RemoteReporter.Builder().WithLoggerFactory(loggerFactory).WithSender(new UdpSender())
+                    .Build();
+                var tracer = new Tracer.Builder(serviceName)
+                    // The constant sampler reports every span.
+                    .WithSampler(new ConstSampler(true))
+                    // LoggingReporter prints every reported span to the logging framework.
+                    .WithReporter(reporter)
+                    .Build();
+                return tracer;
+            });
+
+            services.Configure<HttpHandlerDiagnosticOptions>(options =>
+                options.OperationNameResolver =
+                    request => $"{request.Method.Method}: {request?.RequestUri?.AbsoluteUri}");
             services.AddMediatR(typeof(AddJobOfferCommand).GetTypeInfo().Assembly);
             services.AddScoped<IDatabaseFactory, DatabaseFactory>();
             services.AddScoped<Persistence.Neo4j.Factory.IDatabaseFactory, Persistence.Neo4j.Factory.DatabaseFactory>();
