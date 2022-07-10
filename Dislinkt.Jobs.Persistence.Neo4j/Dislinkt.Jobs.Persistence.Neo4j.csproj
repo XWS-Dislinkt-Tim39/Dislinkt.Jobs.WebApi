@@ -59,8 +59,9 @@
     <Compile Include="Common\IQueryExecutor.cs" />
     <Compile Include="Common\Neo4jDbContext.cs" />
     <Compile Include="Common\QueryExecutor.cs" />
-    <Compile Include="Entites\BaseEntity.cs" />
-    <Compile Include="Entites\JobEntity.cs" />
+    <Compile Include="Entities\BaseEntity.cs" />
+    <Compile Include="Entities\JobEntity.cs" />
+    <Compile Include="Entities\SkillEntity.cs" />
     <Compile Include="Factory\DatabaseFactory.cs" />
     <Compile Include="Factory\IDatabaseFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

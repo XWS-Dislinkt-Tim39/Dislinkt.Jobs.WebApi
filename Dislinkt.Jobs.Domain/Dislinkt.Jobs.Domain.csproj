@@ -239,6 +239,7 @@
   <ItemGroup>
     <Compile Include="Jobs\Job.cs" />
     <Compile Include="Jobs\Seniority.cs" />
+    <Compile Include="Jobs\Skill.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
