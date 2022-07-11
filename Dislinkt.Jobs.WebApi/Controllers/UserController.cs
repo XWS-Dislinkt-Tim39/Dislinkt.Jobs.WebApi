@@ -51,7 +51,7 @@ namespace Dislinkt.Jobs.WebApi.Controllers
         /// <returns>Status of assigning a skill to a user</returns>
         /// /// <param name="assignSkillData">for job</param>
         [HttpPost]
-        [Authorize]
+       
         [SwaggerOperation(Tags = new[] { ApiTag })]
         [Route("/assignSkill")]
         public async Task<bool> AssignSkill([FromBody]AssignSkillData assignSkillData)

@@ -39,7 +39,7 @@ namespace Dislinkt.Jobs.Persistence.Neo4j.Common
             query += "})";
 
 
-            IAsyncSession session = _databaseFactory.Create().AsyncSession();
+            IAsyncSession session = _databaseFactory.Create().AsyncSession(o => o.WithDatabase("jobs"));
             try
             {
                 await session.RunAsync(query);
@@ -56,7 +56,7 @@ namespace Dislinkt.Jobs.Persistence.Neo4j.Common
             var query = $"MATCH (t1), (t2) " +
                         $"WHERE t1.Id = \"{sourceId}\" AND t2.Id = \"{targetId}\" " +
                         $"CREATE (t1)-[:{connectionName}]->(t2)";
-            IAsyncSession session = _databaseFactory.Create().AsyncSession();
+            IAsyncSession session = _databaseFactory.Create().AsyncSession(o => o.WithDatabase("jobs"));
             try
             {
                 await session.RunAsync(query);
@@ -73,7 +73,7 @@ namespace Dislinkt.Jobs.Persistence.Neo4j.Common
             var query = $"MATCH (t1) - [connection:{connectionName}] -> (t2) " +
                         $"WHERE t1.Id = \"{sourceId}\" AND t2.Id = \"{targetId}\" " +
                         "DELETE connection";
-            IAsyncSession session = _databaseFactory.Create().AsyncSession();
+            IAsyncSession session = _databaseFactory.Create().AsyncSession(o => o.WithDatabase("jobs"));
             try
             {
                 await session.RunAsync(query);
@@ -90,7 +90,7 @@ namespace Dislinkt.Jobs.Persistence.Neo4j.Common
             var query = $"MATCH (n)-[:{connectionType}]->(m) " +
                         $"WHERE n.Id = \"{sourceId}\" " +
                         "RETURN m.Id as Id";
-            IAsyncSession session = _databaseFactory.Create().AsyncSession();
+            IAsyncSession session = _databaseFactory.Create().AsyncSession(o => o.WithDatabase("jobs"));
             try
             {
                 List<IRecord> readResult = await session.ReadTransactionAsync(async tx =>
@@ -119,7 +119,7 @@ namespace Dislinkt.Jobs.Persistence.Neo4j.Common
                 WHERE u.Id = $id
                 RETURN u";
 
-            IAsyncSession session = _databaseFactory.Create().AsyncSession();
+            IAsyncSession session = _databaseFactory.Create().AsyncSession(o => o.WithDatabase("jobs"));
             try
             {
                 var readResult = await session.ReadTransactionAsync(async tx =>
@@ -147,7 +147,7 @@ namespace Dislinkt.Jobs.Persistence.Neo4j.Common
                         $"AND n.{conditionAttribute} = j.{conditionAttribute} " +
                         $"RETURN j";
 
-            IAsyncSession session = _databaseFactory.Create().AsyncSession();
+            IAsyncSession session = _databaseFactory.Create().AsyncSession(o => o.WithDatabase("jobs"));
             try
             {
                 var readResult = await session.ReadTransactionAsync(async tx =>
