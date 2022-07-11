@@ -161,7 +161,6 @@
         <member name="M:GrpcAddNotificationService.addNotificationGreeter.addNotificationGreeterClient.NewInstance(Grpc.Core.ClientBase.ClientBaseConfiguration)">
             <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
         </member>
-
         <member name="T:GrpcAddActivityService.AddActivityReflection">
             <summary>Holder for reflection information generated from Protos/addActivity.proto</summary>
         </member>
@@ -210,6 +209,5 @@
         <member name="M:GrpcAddActivityService.addActivityGreeter.addActivityGreeterClient.NewInstance(Grpc.Core.ClientBase.ClientBaseConfiguration)">
             <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
         </member>
-
     </members>
 </doc>

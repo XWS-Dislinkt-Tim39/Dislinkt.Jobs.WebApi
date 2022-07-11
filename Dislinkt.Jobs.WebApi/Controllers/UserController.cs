@@ -38,7 +38,6 @@ namespace Dislinkt.Jobs.WebApi.Controllers
         /// <returns>Status of publishing job offer</returns>
         /// /// <param name="userData">for job</param>
         [HttpPost]
-        [Authorize]
         [SwaggerOperation(Tags = new[] {ApiTag})]
         [Route("/addUser")]
         public async Task<bool> AddUser(UserData userData)
@@ -55,7 +54,7 @@ namespace Dislinkt.Jobs.WebApi.Controllers
         [Authorize]
         [SwaggerOperation(Tags = new[] { ApiTag })]
         [Route("/assignSkill")]
-        public async Task<bool> AssignSkill(AssignSkillData assignSkillData)
+        public async Task<bool> AssignSkill([FromBody]AssignSkillData assignSkillData)
         {
             return await _mediator.Send(new AssignSkillCommand(assignSkillData));
         }
@@ -69,7 +68,7 @@ namespace Dislinkt.Jobs.WebApi.Controllers
         [Authorize]
         [SwaggerOperation(Tags = new[] { ApiTag })]
         [Route("/removeSkill")]
-        public async Task<bool> RemoveSkill(AssignSkillData assignSkillData)
+        public async Task<bool> RemoveSkill([FromBody] AssignSkillData assignSkillData)
         {
             return await _mediator.Send(new RemoveSkillCommand(assignSkillData));
         }
@@ -80,7 +79,7 @@ namespace Dislinkt.Jobs.WebApi.Controllers
         /// <returns>List of recommended jobs</returns>
         /// /// <param name="sourceId">for user</param>
         [HttpGet]
-        //[Authorize]
+        [Authorize]
         [SwaggerOperation(Tags = new[] { ApiTag })]
         [Route("/getJobRecommendations")]
         public async Task<IReadOnlyList<Job>> GetJobRecommendations(Guid sourceId)
