@@ -242,6 +242,7 @@
     <Compile Include="AssignSkillData.cs" />
     <Compile Include="JobOfferData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequireSkillData.cs" />
     <Compile Include="SkillData.cs" />
     <Compile Include="UserData.cs" />
   </ItemGroup>

@@ -32,5 +32,18 @@ namespace Dislinkt.Jobs.Persistence.Neo4j.Repositories
             }
         }
 
+        public async Task RequireSkillAsync(Guid skillId, Guid jobId)
+        {
+            try
+            {
+                await _queryExecutor.CreateConnectionAsync(jobId, skillId, "REQUIRES");
+            }
+            catch (Exception e)
+            {
+                Trace.WriteLine(e.ToString());
+                throw;
+            }
+        }
+
     }
 }
