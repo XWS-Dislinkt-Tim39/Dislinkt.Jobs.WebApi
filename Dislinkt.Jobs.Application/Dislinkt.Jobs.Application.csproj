@@ -257,6 +257,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RemoveSkill\Commands\RemoveSkillCommand.cs" />
     <Compile Include="RemoveSkill\Commands\RemoveSkillHandler.cs" />
+    <Compile Include="RequireSkill\Commands\RequireSkillCommand.cs" />
+    <Compile Include="RequireSkill\Commands\RequireSkillHandler.cs" />
     <Compile Include="SearchJobs\Commands\SearchJobsCommand.cs" />
     <Compile Include="SearchJobs\Commands\SearchJobsHandler.cs" />
   </ItemGroup>
