@@ -10,5 +10,6 @@ namespace Dislinkt.Jobs.Core.Repositories
     public interface IJobGraphRepository
     {
         Task AddJobAsync(Job job);
+        Task RequireSkillAsync(Guid skillId, Guid jobId);
     }
 }
