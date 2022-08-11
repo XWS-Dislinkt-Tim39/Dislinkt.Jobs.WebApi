@@ -1,4 +1,5 @@
 ﻿using Dislinkt.Jobs.Application.AddJobOffer.Commands;
+using Dislinkt.Jobs.Application.AddSkill.Commands;
 using Dislinkt.Jobs.Application.GetAllJobs.Commands;
 using Dislinkt.Jobs.Application.GetByUserId;
 using Dislinkt.Jobs.Application.SearchJobs.Commands;
@@ -20,7 +21,7 @@ using OpenTracing;
 namespace Dislinkt.Jobs.WebApi.Controllers
 {
     /// <summary>
-    /// Jobs controler
+    /// Jobs controller
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
@@ -126,6 +127,17 @@ namespace Dislinkt.Jobs.WebApi.Controllers
             var actionName = ControllerContext.ActionDescriptor.DisplayName;
             using var scope = _tracer.BuildSpan(actionName).StartActive(true);
             return await _mediator.Send(new GetByUserIdCommand(userId));
+        }
+
+        /// <summary>
+        /// Add a skill.
+        /// </summary>
+        [HttpPost]
+        [SwaggerOperation(Tags = new[] { ApiTag })]
+        [Route("/addSkill")]
+        public async Task<bool> AddSkillAsync(SkillData skillData)
+        {
+            return await _mediator.Send(new AddSkillCommand(skillData));
         }
     }
 }
