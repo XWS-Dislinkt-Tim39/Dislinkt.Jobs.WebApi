@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -46,6 +46,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Dislinkt.Jobs.Application\Dislinkt.Jobs.Application.csproj" />
     <ProjectReference Include="..\Dislinkt.Jobs.Persistance.MongoDB\Dislinkt.Jobs.Persistance.MongoDB.csproj" />
+    <ProjectReference Include="..\Dislinkt.Jobs.Persistence.Neo4j\Dislinkt.Jobs.Persistence.Neo4j.csproj" />
     <ProjectReference Include="..\Dislinkt.Jobs\Dislinkt.Jobs.csproj" />
   </ItemGroup>
    <ItemGroup>  
