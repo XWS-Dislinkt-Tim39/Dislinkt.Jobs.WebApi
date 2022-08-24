@@ -8,19 +8,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dislinkt.Jobs.WebApi", "Dis
 		{7CE4E186-62A1-47C7-A27E-88D682E57068} = {7CE4E186-62A1-47C7-A27E-88D682E57068}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dislinkt.Jobs", "Dislinkt.Jobs\Dislinkt.Jobs.csproj", "{29928BCE-B306-4BE4-9FA4-6D9B99591201}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dislinkt.Jobs", "Dislinkt.Jobs\Dislinkt.Jobs.csproj", "{29928BCE-B306-4BE4-9FA4-6D9B99591201}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dislinkt.Jobs.Application", "Dislinkt.Jobs.Application\Dislinkt.Jobs.Application.csproj", "{B3F67F9C-B531-4D13-B8AF-69408BF74E74}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dislinkt.Jobs.Application", "Dislinkt.Jobs.Application\Dislinkt.Jobs.Application.csproj", "{B3F67F9C-B531-4D13-B8AF-69408BF74E74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dislinkt.Jobs.Core", "Dislinkt.Jobs.Core\Dislinkt.Jobs.Core.csproj", "{505D25CC-A86A-44DB-AA51-90C77C415E8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dislinkt.Jobs.Core", "Dislinkt.Jobs.Core\Dislinkt.Jobs.Core.csproj", "{505D25CC-A86A-44DB-AA51-90C77C415E8F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dislinkt.Jobs.Domain", "Dislinkt.Jobs.Domain\Dislinkt.Jobs.Domain.csproj", "{F8DE0549-568C-41E0-B922-34CD729A6018}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dislinkt.Jobs.Domain", "Dislinkt.Jobs.Domain\Dislinkt.Jobs.Domain.csproj", "{F8DE0549-568C-41E0-B922-34CD729A6018}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dislinkt.Jobs.Persistance.MongoDB", "Dislinkt.Jobs.Persistance.MongoDB\Dislinkt.Jobs.Persistance.MongoDB.csproj", "{E8698296-1404-4019-AE18-6600C7F91FF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dislinkt.Jobs.Persistance.MongoDB", "Dislinkt.Jobs.Persistance.MongoDB\Dislinkt.Jobs.Persistance.MongoDB.csproj", "{E8698296-1404-4019-AE18-6600C7F91FF7}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{337C6E4C-DDB8-4F97-94FC-1429B05D1C7D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dislinkt.Jobs.Persistence.Neo4j", "Dislinkt.Jobs.Persistence.Neo4j\Dislinkt.Jobs.Persistence.Neo4j.csproj", "{7CE4E186-62A1-47C7-A27E-88D682E57068}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dislinkt.Jobs.Persistence.Neo4j", "Dislinkt.Jobs.Persistence.Neo4j\Dislinkt.Jobs.Persistence.Neo4j.csproj", "{7CE4E186-62A1-47C7-A27E-88D682E57068}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrpcService", "GrpcService\GrpcService.csproj", "{71FD8D45-BAF6-4B4B-B025-2A02B81F21B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -60,6 +62,10 @@ Global
 		{7CE4E186-62A1-47C7-A27E-88D682E57068}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CE4E186-62A1-47C7-A27E-88D682E57068}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CE4E186-62A1-47C7-A27E-88D682E57068}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71FD8D45-BAF6-4B4B-B025-2A02B81F21B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71FD8D45-BAF6-4B4B-B025-2A02B81F21B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71FD8D45-BAF6-4B4B-B025-2A02B81F21B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71FD8D45-BAF6-4B4B-B025-2A02B81F21B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

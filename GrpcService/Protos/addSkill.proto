@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcAddSkillService";
+
+package AddNewSkill;
+
+service AddSkillGreeter {
+	rpc AddSkill (AddSkillRequest) returns (AddSkillReply);
+}
+
+message AddSkillRequest {
+	string UserId = 1;
+	string SkillId = 2;
+}
+
+message AddSkillReply {
+	bool successful = 1;
+	string message = 2;
+}
