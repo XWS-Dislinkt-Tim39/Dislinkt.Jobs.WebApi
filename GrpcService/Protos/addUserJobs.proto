@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcAddUserJobsService";
+
+package AddNewUserJobs;
+
+service AddUserJobsGreeter {
+	rpc AddUserJobs (AddUserJobsRequest) returns (AddUserJobsReply);
+}
+
+message AddUserJobsRequest {
+	string Id = 1;
+	string Name = 2;
+	int32 Seniority = 3;
+}
+
+message AddUserJobsReply {
+	bool successful = 1;
+	string message = 2;
+}

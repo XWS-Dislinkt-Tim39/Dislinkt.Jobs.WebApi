@@ -13,6 +13,7 @@ namespace Dislinkt.Jobs.Domain.Users
         public string Username { get; set; }
         public Seniority Seniority { get; set; }
 
+        public User(){}
         public User(Guid id, string username, Seniority seniority)
         {
             Id = id;
