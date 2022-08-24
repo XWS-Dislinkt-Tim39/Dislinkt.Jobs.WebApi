@@ -42,7 +42,7 @@ namespace GrpcService.Services
             }
             return await Task.FromResult(new AddUserJobsReply
             {
-                Message = "Skill: ",
+                Message = $"User: {request.Id} | {request.Name} | {(Seniority)request.Seniority}",
                 Successful = true
             });
         }
