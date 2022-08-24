@@ -34,7 +34,7 @@ namespace GrpcService.Services
             }
             return await Task.FromResult(new AddSkillReply
             {
-                Message = "Skill: ",
+                Message = $"Skill: {request.SkillId} | User: {request.UserId}",
                 Successful = true
             });
         }
