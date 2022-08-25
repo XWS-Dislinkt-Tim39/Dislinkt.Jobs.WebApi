@@ -15,6 +15,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Dislinkt.Jobs.Core\Dislinkt.Jobs.Core.csproj" />
+    <ProjectReference Include="..\Dislinkt.Jobs.Persistance.MongoDB\Dislinkt.Jobs.Persistance.MongoDB.csproj" />
+    <ProjectReference Include="..\Dislinkt.Jobs.Persistence.Neo4j\Dislinkt.Jobs.Persistence.Neo4j.csproj" />
   </ItemGroup>
 	<ItemGroup>
 		<Protobuf Include="Protos\addSkill.proto" GrpcServices="Server" />

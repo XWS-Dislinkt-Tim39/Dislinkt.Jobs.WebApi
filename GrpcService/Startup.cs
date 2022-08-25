@@ -8,6 +8,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using GrpcService.Services;
+using Dislinkt.Jobs.Persistence.Neo4j.Factory;
+using Dislinkt.Jobs.Persistance.MongoDB.Common;
+using Dislinkt.Jobs.Core.Repositories;
+using Dislinkt.Jobs.Persistance.MongoDB.Repositories;
+using Dislinkt.Jobs.Persistence.Neo4j.Common;
+using Dislinkt.Jobs.Persistence.Neo4j.Repositories;
 
 namespace GrpcService
 {
@@ -18,6 +24,17 @@ namespace GrpcService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddGrpc();
+            // Dislinkt.Connections.Persistence.MongoDB
+            services.AddScoped <Dislinkt.Jobs.Persistance.MongoDB.Factories.IDatabaseFactory, Dislinkt.Jobs.Persistance.MongoDB.Factories.DatabaseFactory > ();
+            services.AddScoped<IDatabaseFactory, DatabaseFactory>();
+            services.AddScoped<Dislinkt.Jobs.Persistance.MongoDB.Common.IQueryExecutor, Dislinkt.Jobs.Persistance.MongoDB.Common.QueryExecutor>();
+            services.AddScoped<Dislinkt.Jobs.Persistence.Neo4j.Common.IQueryExecutor, Dislinkt.Jobs.Persistence.Neo4j.Common.QueryExecutor>();
+            services.AddScoped<IJobRepository,JobRepository>();
+            services.AddScoped<IJobGraphRepository, JobGraphRepository>();
+            services.AddScoped<ISkillRepository, SkillRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<Dislinkt.Jobs.Persistance.MongoDB.Common.MongoDbContext>();
+            services.AddScoped<Neo4jDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

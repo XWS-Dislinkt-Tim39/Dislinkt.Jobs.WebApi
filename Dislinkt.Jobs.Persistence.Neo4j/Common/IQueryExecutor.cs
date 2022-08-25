@@ -10,6 +10,7 @@ namespace Dislinkt.Jobs.Persistence.Neo4j.Common
     public interface IQueryExecutor
     {
         Task CreateAsync<T>(T t, string EntityType) where T : BaseEntity;
+        Task DeleteByIdAsync<T>(Guid id) where T : BaseEntity;
         Task CreateConnectionAsync(Guid sourceId, Guid targetId, string connectionName);
         Task RemoveConnectionAsync(Guid sourceId, Guid targetId, string connectionName);
         Task<IReadOnlyList<Guid>> GetConnectedAsync(Guid sourceId, string connectionType);

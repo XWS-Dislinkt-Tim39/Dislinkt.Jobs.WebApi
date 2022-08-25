@@ -35,7 +35,7 @@ namespace Dislinkt.Jobs
         /// <summary>
         /// Requirements
         /// </summary>
-        public string[] Requirements { get; set; }
+        public Guid[] Requirements { get; set; }
 
 
         public string[] followersId { get; set; }

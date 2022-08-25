@@ -63,6 +63,7 @@
             <returns>Status of publishing job offer</returns>
             /// <param name="userData">for job</param>
         </member>
+        <!-- Badly formed XML comment ignored for member "M:Dislinkt.Jobs.WebApi.Controllers.UserController.DeleteUser(System.Guid)" -->
         <member name="M:Dislinkt.Jobs.WebApi.Controllers.UserController.AssignSkill(Dislinkt.Jobs.AssignSkillData)">
             <summary>
             Assigns a skill to a user

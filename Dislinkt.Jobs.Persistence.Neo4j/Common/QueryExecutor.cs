@@ -18,6 +18,8 @@ namespace Dislinkt.Jobs.Persistence.Neo4j.Common
         public async Task CreateAsync<T>(T t, string EntityType) where T : BaseEntity
             => await _neo4jDbContext.CreateAsync(t, EntityType);
 
+        public async Task DeleteByIdAsync<T>(Guid id) where T : BaseEntity
+            => await _neo4jDbContext.DeleteByIdAsync<T>(id);
         public async Task CreateConnectionAsync(Guid sourceId, Guid targetId, string connectionName)
             => await _neo4jDbContext.CreateConnectionAsync(sourceId, targetId, connectionName);
 

@@ -12,11 +12,11 @@ namespace Dislinkt.Jobs.Domain.Jobs
         public string PositionName { get; }
         public string Description { get; }
         public string[] DailyActivities { get; }
-        public string[] Requirements { get; }
+        public Guid[] Requirements { get; }
         public Seniority Seniority { get; }
 
         public Job(Guid id,DateTime startDateTime,DateTime endDateTime, Guid publisherId, string positionName, string description, 
-            string[] dailyActivities, string[] requirements, Seniority seniority)
+            string[] dailyActivities, Guid[] requirements, Seniority seniority)
         {
             Id = id;
             StartDateTime = startDateTime;

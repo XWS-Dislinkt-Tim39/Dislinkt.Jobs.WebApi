@@ -14,7 +14,7 @@ namespace Dislinkt.Jobs.Persistance.MongoDB.Entities
         public string PositionName { get; set; }
         public string Description { get; set; }
         public string[] DailyActivities { get; set; }
-        public string[] Requirements { get; set; }
+        public Guid[] Requirements { get; set; }
         public Seniority Seniority { get; set; }
         public Job ToJob()
             => new Job(this.Id, this.StartDateTime,this.EndDateTime,this.PublisherId, this.PositionName, this.Description, this.DailyActivities, 

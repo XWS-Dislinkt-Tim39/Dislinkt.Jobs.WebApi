@@ -51,6 +51,22 @@ namespace Dislinkt.Jobs.Persistence.Neo4j.Common
             }
         }
 
+        public async Task DeleteByIdAsync<T>(Guid id) where T : BaseEntity
+        {
+            var query = $"MATCH(n {{Id: \"{id}\"}})" +
+                        $"DETACH DELETE n";
+            IAsyncSession session = _databaseFactory.Create().AsyncSession(o => o.WithDatabase("jobs"));
+            try
+            {
+                await session.RunAsync(query);
+            }
+            catch (Neo4jException ex)
+            {
+                Trace.WriteLine($"{query} - {ex}");
+                throw;
+            }
+        }
+
         public async Task CreateConnectionAsync(Guid sourceId, Guid targetId, string connectionName)
         {
             var query = $"MATCH (t1), (t2) " +

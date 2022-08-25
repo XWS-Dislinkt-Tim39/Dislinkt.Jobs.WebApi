@@ -1,4 +1,5 @@
-﻿using Dislinkt.Jobs.Core.Repositories;
+﻿using Dislinkt.Jobs.Application.RequireSkill.Commands;
+using Dislinkt.Jobs.Core.Repositories;
 using Dislinkt.Jobs.Domain.Jobs;
 using MediatR;
 using System;
@@ -12,11 +13,13 @@ namespace Dislinkt.Jobs.Application.AddJobOffer.Commands
     {
         private readonly IJobRepository _jobRepository;
         private readonly IJobGraphRepository _jobGraphRepository;
+        private readonly IMediator _mediator;
 
-        public AddJobOfferHandler(IJobRepository jobRepository, IJobGraphRepository jobGraphRepository)
+        public AddJobOfferHandler(IJobRepository jobRepository, IJobGraphRepository jobGraphRepository, IMediator mediator)
         {
             _jobRepository = jobRepository;
             _jobGraphRepository = jobGraphRepository;
+            _mediator = mediator;
         }
 
         public async Task<Job> Handle(AddJobOfferCommand request, CancellationToken cancellationToken)
@@ -29,6 +32,18 @@ namespace Dislinkt.Jobs.Application.AddJobOffer.Commands
                     request.Request.Requirements, request.Request.Seniority);
                 await _jobRepository.AddJobAsync(job);
                 await _jobGraphRepository.AddJobAsync(job);
+                
+                    foreach (var skill in job.Requirements)
+                    {
+                        var requirement = new RequireSkillData
+                        {
+                            JobId = job.Id,
+                            SkillId = skill
+                        };
+                        await _mediator.Send(new RequireSkillCommand(requirement));
+                    }
+                
+               
                 return job;
             }
             catch (Exception e)

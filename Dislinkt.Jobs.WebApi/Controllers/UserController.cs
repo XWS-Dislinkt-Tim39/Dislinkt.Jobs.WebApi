@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Dislinkt.Jobs.Application.AddUser.Commands;
 using Dislinkt.Jobs.Application.AssignSkill.Commands;
+using Dislinkt.Jobs.Application.DeleteUser.Commands;
 using Dislinkt.Jobs.Application.GetJobRecommendations.Commands;
 using Dislinkt.Jobs.Application.RemoveSkill.Commands;
 using Dislinkt.Jobs.Domain.Jobs;
@@ -43,6 +44,14 @@ namespace Dislinkt.Jobs.WebApi.Controllers
         public async Task<bool> AddUser(UserData userData)
         {
             return await _mediator.Send(new AddUserCommand(userData));
+        }
+
+        /// </summary>
+        [HttpDelete]
+        [Route("/deleteUser/{id}")]
+        public async Task<bool> DeleteUser(Guid id)
+        {
+            return await _mediator.Send(new DeleteUserCommand(id));
         }
 
         /// <summary>

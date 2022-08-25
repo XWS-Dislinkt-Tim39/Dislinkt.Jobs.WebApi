@@ -11,7 +11,7 @@ namespace Dislinkt.Jobs.Persistence.Neo4j.Factory
     {
         public IDriver Create()
         {
-            var uri = "bolt://localhost:7687";
+            var uri = "bolt://localhost:11003";
             var user = "neo4j";
             var password = "dislinkt";
             return GraphDatabase.Driver(uri, AuthTokens.Basic(user, password));

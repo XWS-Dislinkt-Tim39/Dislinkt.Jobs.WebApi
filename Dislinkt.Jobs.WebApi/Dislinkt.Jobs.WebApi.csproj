@@ -8,10 +8,13 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>C:\Users\DELL\Desktop\dislinkt\Dislinkt.Jobs.WebApi\Dislinkt.Jobs.WebApi\Dislinkt.Jobs.WebApi.xml</DocumentationFile>
+    <DocumentationFile>C:\Users\Natalija\OneDrive\Documents\IV godina\XML-Dislinkt\Dislinkt.Jobs.WebApi\Dislinkt.Jobs.WebApi\Dislinkt.Jobs.WebApi.xml</DocumentationFile>
   </PropertyGroup>
  <ItemGroup>  
   <Protobuf Remove="Protos\addNotification.proto" />  
+  </ItemGroup>
+  <ItemGroup>  
+  <Protobuf Remove="Protos\addSkill.proto" />  
   </ItemGroup>
     <ItemGroup>  
   <Protobuf Remove="Protos\addActivity.proto" />  

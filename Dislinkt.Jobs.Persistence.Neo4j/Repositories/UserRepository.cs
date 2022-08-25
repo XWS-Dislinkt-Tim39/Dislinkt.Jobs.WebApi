@@ -25,6 +25,11 @@ namespace Dislinkt.Jobs.Persistence.Neo4j.Repositories
             await _queryExecutor.CreateAsync<UserEntity>(UserEntity.ToUserEntity(user), "USER");
         }
 
+        public async Task DeleteById(Guid id)
+        {
+            await _queryExecutor.DeleteByIdAsync<UserEntity>(id);
+        }
+
         public async Task AddSkillAsync(Guid userId, Guid skillId)
         {
             await _queryExecutor.CreateConnectionAsync(userId, skillId, "HAS_SKILL");
