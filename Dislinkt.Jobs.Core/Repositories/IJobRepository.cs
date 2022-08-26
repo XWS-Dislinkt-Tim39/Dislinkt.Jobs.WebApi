@@ -11,5 +11,6 @@ namespace Dislinkt.Jobs.Core.Repositories
         Task<IReadOnlyList<Job>> SearchJobs(string searchParameter);
         Task<IReadOnlyCollection<Job>> GetAllAsync();
         Task<IReadOnlyCollection<Job>> GetByUserId(Guid userId);
+        Task<Job> GetById(Guid jobId);
     }
 }

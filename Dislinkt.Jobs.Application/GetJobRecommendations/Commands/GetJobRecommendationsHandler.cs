@@ -14,17 +14,26 @@ namespace Dislinkt.Jobs.Application.GetJobRecommendations.Commands
     public class GetJobRecommendationsHandler : IRequestHandler<GetJobRecommendationsCommand, IReadOnlyList<Job>>
     {
         private readonly IUserRepository _userRepository;
+        private readonly IJobRepository _jobRepository;
 
-        public GetJobRecommendationsHandler(IUserRepository userRepository)
+        public GetJobRecommendationsHandler(IUserRepository userRepository,IJobRepository jobRepository)
         {
             _userRepository = userRepository;
+            _jobRepository = jobRepository;
         }
 
         public async Task<IReadOnlyList<Job>> Handle(GetJobRecommendationsCommand request, CancellationToken cancellationToken)
         {
             try
             {
-                return await _userRepository.GetJobRecommendationsAsync(request.SourceId);
+                var fullJobs =new List<Job>();
+                var recommended= await _userRepository.GetJobRecommendationsAsync(request.SourceId);
+                foreach (var job in recommended)
+                {
+                    fullJobs.Add(_jobRepository.GetById(job.Id).Result);
+                }
+
+                return fullJobs;
             }
             catch (Exception e)
             {
