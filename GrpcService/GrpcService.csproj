@@ -21,6 +21,7 @@
 	<ItemGroup>
 		<Protobuf Include="Protos\addSkill.proto" GrpcServices="Server" />
         <Protobuf Include="Protos\addUserJobs.proto" GrpcServices="Server" />
+        <Protobuf Include="Protos\updateSeniority.proto" GrpcServices="Server" />
 	</ItemGroup>
 
 </Project>

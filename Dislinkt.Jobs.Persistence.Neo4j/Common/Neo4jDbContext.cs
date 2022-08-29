@@ -192,5 +192,25 @@ namespace Dislinkt.Jobs.Persistence.Neo4j.Common
                 throw;
             }
         }
+
+        public async Task UpdateSpecificById<T>(T t, string attributeName, string attributeValue) where T : BaseEntity
+        {
+            
+            var query = $"MATCH(n {{Id: \"{t.Id}\" }} " +
+                $"SET {attributeName} = {attributeValue}" +
+                $"RETURN n";
+
+
+            IAsyncSession session = _databaseFactory.Create().AsyncSession(o => o.WithDatabase("jobs"));
+            try
+            {
+                await session.RunAsync(query);
+            }
+            catch (Neo4jException ex)
+            {
+                Trace.WriteLine($"{query} - {ex}");
+                throw;
+            }
+        }
     }
 }

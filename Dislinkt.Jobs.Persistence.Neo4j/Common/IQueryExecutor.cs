@@ -17,5 +17,6 @@ namespace Dislinkt.Jobs.Persistence.Neo4j.Common
         Task<T> FindByIdAsync<T>(Guid id) where T : BaseEntity;
         Task<IReadOnlyList<T>> GetCommonNodeWithCondition<T>(Guid sourceId, string sourceLabel, string targetLabel, 
             string sourceConnectionLabel, string targetConnectionLabel, string conditionAttribute, string commonNodeLabel) where T : BaseEntity;
+        Task UpdateSpecificByIdAsync<T>(T t, string attributeName, string attributeValue) where T : BaseEntity;
     }
 }
