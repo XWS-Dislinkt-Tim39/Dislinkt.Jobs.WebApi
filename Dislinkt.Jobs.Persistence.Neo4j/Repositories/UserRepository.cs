@@ -48,5 +48,14 @@ namespace Dislinkt.Jobs.Persistence.Neo4j.Repositories
 
             return retVal;
         }
+
+        public async Task UpdateSeniorityByIdAsync(Guid id, Seniority seniority)
+        {
+            await _queryExecutor.UpdateSpecificByIdAsync<UserEntity>(new UserEntity
+            {
+                Id = id,
+                Seniority = seniority
+            }, "Seniority", seniority.ToString());
+        }
     }
 }

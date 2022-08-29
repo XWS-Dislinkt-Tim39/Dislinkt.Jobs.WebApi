@@ -18,6 +18,6 @@ namespace Dislinkt.Jobs.Core.Repositories
         Task RemoveSkillAsync(Guid userId, Guid skillId);
 
         Task<IReadOnlyList<Job>> GetJobRecommendationsAsync(Guid userId);
-        Task UpdateSeniorityById(Guid id, Seniority seniority);
+        Task UpdateSeniorityByIdAsync(Guid id, Seniority seniority);
     }
 }

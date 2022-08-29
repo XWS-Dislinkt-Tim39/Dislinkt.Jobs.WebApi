@@ -38,5 +38,7 @@ namespace Dislinkt.Jobs.Persistence.Neo4j.Common
             string commonNodeLabel) where T : BaseEntity
             => await _neo4jDbContext.GetCommonNodeWithCondition<T>(sourceId, sourceLabel, targetLabel,
                 sourceConnectionLabel, targetConnectionLabel, conditionAttribute, commonNodeLabel);
+        public async Task UpdateSpecificByIdAsync<T>(T t, string attributeName, string attributeValue) where T : BaseEntity
+            => await _neo4jDbContext.UpdateSpecificById(t, attributeName, attributeValue);
     }
 }

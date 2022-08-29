@@ -23,7 +23,7 @@ namespace GrpcService.Services
         {
             try
             {
-                await _userRepository.UpdateSeniorityById(Guid.Parse(request.Id), (Seniority)request.Seniority);
+                await _userRepository.UpdateSeniorityByIdAsync(Guid.Parse(request.Id), (Seniority)request.Seniority);
             }
             catch(Exception e)
             {
