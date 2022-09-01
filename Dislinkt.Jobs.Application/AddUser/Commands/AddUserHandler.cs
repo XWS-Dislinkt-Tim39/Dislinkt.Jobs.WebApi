@@ -33,7 +33,7 @@ namespace Dislinkt.Jobs.Application.AddUser.Commands
             }
             catch (Exception e)
             {
-                Trace.WriteLine(e.ToString());
+                Console.WriteLine(e.ToString());
                 return false;
             }
 
