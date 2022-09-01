@@ -13,4 +13,12 @@
 	  <ProjectReference Include="..\Dislinkt.Jobs\Dislinkt.Jobs.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <None Remove="GetAllUsers\" />
+	  <None Remove="GetAllUsers\Commands\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="GetAllUsers\" />
+	  <Folder Include="GetAllUsers\Commands\" />
+	</ItemGroup>
 </Project>

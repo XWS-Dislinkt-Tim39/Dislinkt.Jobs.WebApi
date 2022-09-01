@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Dislinkt.Jobs.Application.AddUser.Commands;
 using Dislinkt.Jobs.Application.AssignSkill.Commands;
 using Dislinkt.Jobs.Application.DeleteUser.Commands;
+using Dislinkt.Jobs.Application.GetAllUsers.Commands;
 using Dislinkt.Jobs.Application.GetJobRecommendations.Commands;
 using Dislinkt.Jobs.Application.RemoveSkill.Commands;
 using Dislinkt.Jobs.Domain.Jobs;
@@ -31,6 +32,23 @@ namespace Dislinkt.Jobs.WebApi.Controllers
         public UserController(IMediator mediator)
         {
             _mediator = mediator;
+        }
+
+        [HttpGet]
+        [Route("/")]
+        public string Index()
+        {
+            return "Hello from Jobs/controller";
+        }
+
+        /// <summary>
+        /// Get all users in Neo4j database
+        /// </summary>
+        [HttpGet]
+        [Route("/getAllUsers")]
+        public async Task<IReadOnlyList<Guid>> GetAllUsersAsync()
+        {
+            return await _mediator.Send(new GetAllUsersCommand());
         }
 
         /// <summary>

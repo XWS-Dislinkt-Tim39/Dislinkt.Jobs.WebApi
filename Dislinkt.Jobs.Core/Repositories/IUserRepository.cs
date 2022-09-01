@@ -10,6 +10,7 @@ namespace Dislinkt.Jobs.Core.Repositories
 {
     public interface IUserRepository
     {
+        Task<IReadOnlyList<Guid>> GetAllUsersAsync();
         Task AddUserAsync(User user);
         Task DeleteById(Guid id);
 

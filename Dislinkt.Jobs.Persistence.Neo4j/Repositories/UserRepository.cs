@@ -20,6 +20,11 @@ namespace Dislinkt.Jobs.Persistence.Neo4j.Repositories
             _queryExecutor = queryExecutor;
         }
 
+        public async Task<IReadOnlyList<Guid>> GetAllUsersAsync()
+        {
+            return await _queryExecutor.GetAll();
+        }
+
         public async Task AddUserAsync(User user)
         {
             await _queryExecutor.CreateAsync<UserEntity>(UserEntity.ToUserEntity(user), "USER");

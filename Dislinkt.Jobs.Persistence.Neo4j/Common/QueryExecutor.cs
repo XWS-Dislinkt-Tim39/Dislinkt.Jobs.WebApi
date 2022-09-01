@@ -15,6 +15,9 @@ namespace Dislinkt.Jobs.Persistence.Neo4j.Common
         {
             _neo4jDbContext = neo4JDbContext;
         }
+        public async Task<IReadOnlyList<Guid>> GetAll()
+            => await _neo4jDbContext.GetAll();
+
         public async Task CreateAsync<T>(T t, string EntityType) where T : BaseEntity
             => await _neo4jDbContext.CreateAsync(t, EntityType);
 
